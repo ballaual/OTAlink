@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b1bb9b5f-6284-42b0-b6a9-4b9a6fc50915"
+      }
+    },
+    "owner": "infernalestube"
   }
 }
