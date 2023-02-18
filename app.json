@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "de.infernalestube.otalink"
     },
     "web": {
       "favicon": "./assets/favicon.png"
