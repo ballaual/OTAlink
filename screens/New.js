@@ -1,11 +1,17 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 
 export default function New() {
+  const colorScheme = useColorScheme();
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, themeContainerStyle]}>
       <View>
-        <Text style={{ color: "#ffff" }}>Neu anlegen</Text>
+        <Text style={[styles.text, themeTextStyle]}>Neu anlegen</Text>
       </View>
       <StatusBar style="light" />
     </View>
@@ -15,8 +21,19 @@ export default function New() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1D2935",
     alignItems: "center",
     justifyContent: "flex-start",
+  },
+  lightContainer: {
+    backgroundColor: "#FFFFFF",
+  },
+  darkContainer: {
+    backgroundColor: "#1D2935",
+  },
+  lightThemeText: {
+    color: "#000000",
+  },
+  darkThemeText: {
+    color: "#FFFFFF",
   },
 });
