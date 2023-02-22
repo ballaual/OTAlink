@@ -11,7 +11,7 @@ export default function New() {
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <View>
-        <Text style={[styles.text, themeTextStyle]}>Neu anlegen</Text>
+        <Text style={[styles.comingSoon, themeTextStyle]}>coming soon</Text>
       </View>
       <StatusBar style="light" />
     </View>
@@ -22,7 +22,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    fontSize: 100,
+  },
+  comingSoon: {
+    fontSize: 30,
   },
   lightContainer: {
     backgroundColor: "#FFFFFF",
