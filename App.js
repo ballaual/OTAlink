@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import Home from "./screens/Home";
 import Library from "./screens/Library";
@@ -12,7 +12,30 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = focused ? "home" : "home-outline";
+            } else if (route.name === "Library") {
+              iconName = focused ? "library" : "library-outline";
+            } else if (route.name === "Favorites") {
+              iconName = focused ? "heart" : "heart-outline";
+            } else if (route.name === "New") {
+              iconName = focused ? "add-circle" : "add-circle-outline";
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "#FFFFFF",
+          tabBarInactiveTintColor: "#EDEDED",
+          tabBarStyle: {
+            backgroundColor: "#1D2935",
+          },
+        })}
+      >
         <Tab.Screen
           name="Home"
           component={Home}
@@ -22,18 +45,10 @@ export default function App() {
             },
             headerShown: true,
             headerTitleAlign: "center",
-            headerTintColor: "#fff",
+            headerTintColor: "#FFFFFF",
             headerTitleStyle: {
               fontWeight: "bold",
             },
-            tabBarStyle: {
-              backgroundColor: "#1D2935",
-            },
-            tabBarLabel: "Start",
-            tabBarActiveTintColor: "white",
-            tabBarIcon: () => (
-              <MaterialIcons name="home" color="white" size={26} />
-            ),
           }}
         />
         <Tab.Screen
@@ -45,18 +60,10 @@ export default function App() {
             },
             headerShown: true,
             headerTitleAlign: "center",
-            headerTintColor: "#fff",
+            headerTintColor: "#FFFFFF",
             headerTitleStyle: {
               fontWeight: "bold",
             },
-            tabBarStyle: {
-              backgroundColor: "#1D2935",
-            },
-            tabBarLabel: "Sammlung",
-            tabBarActiveTintColor: "white",
-            tabBarIcon: () => (
-              <MaterialIcons name="library-books" color="white" size={26} />
-            ),
           }}
         />
         <Tab.Screen
@@ -68,18 +75,10 @@ export default function App() {
             },
             headerShown: true,
             headerTitleAlign: "center",
-            headerTintColor: "#fff",
+            headerTintColor: "#FFFFFF",
             headerTitleStyle: {
               fontWeight: "bold",
             },
-            tabBarStyle: {
-              backgroundColor: "#1D2935",
-            },
-            tabBarLabel: "Favoriten",
-            tabBarActiveTintColor: "white",
-            tabBarIcon: () => (
-              <MaterialIcons name="favorite" color="white" size={26} />
-            ),
           }}
         />
         <Tab.Screen
@@ -91,18 +90,10 @@ export default function App() {
             },
             headerShown: true,
             headerTitleAlign: "center",
-            headerTintColor: "#fff",
+            headerTintColor: "#FFFFFF",
             headerTitleStyle: {
               fontWeight: "bold",
             },
-            tabBarStyle: {
-              backgroundColor: "#1D2935",
-            },
-            tabBarLabel: "Neu",
-            tabBarActiveTintColor: "white",
-            tabBarIcon: () => (
-              <MaterialIcons name="add-circle" color="white" size={26} />
-            ),
           }}
         />
       </Tab.Navigator>
