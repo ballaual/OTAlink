@@ -13,9 +13,7 @@ export default function Home({}) {
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <View>
-        <Text style={[styles.text, styles.appName, themeTextStyle]}>
-          OTAlink
-        </Text>
+        <Text style={[styles.appName, themeTextStyle]}>OTAlink</Text>
       </View>
       <View>
         <Image
@@ -24,7 +22,7 @@ export default function Home({}) {
         />
       </View>
       <View>
-        <Text style={[styles.text, styles.description, themeTextStyle]}>
+        <Text style={[styles.description, themeTextStyle]}>
           Herzlich Willkommen bei OTAlink!{"\n"}
           {"\n"}Zeile 2 Beschreibung.{"\n"}
           {"\n"}Zeile 3 Beschreibung.{"\n"}

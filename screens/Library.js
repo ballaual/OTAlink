@@ -11,7 +11,7 @@ export default function Library() {
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <View>
-        <Text style={[styles.text, themeTextStyle]}>Sammlung</Text>
+        <Text style={[themeTextStyle]}>Sammlung</Text>
       </View>
       <StatusBar style="light" />
     </View>

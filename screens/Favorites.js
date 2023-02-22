@@ -11,7 +11,7 @@ export default function Favorites() {
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <View>
-        <Text style={[styles.text, themeTextStyle]}>Favoriten</Text>
+        <Text style={[themeTextStyle]}>Favoriten</Text>
       </View>
       <StatusBar style="light" />
     </View>
