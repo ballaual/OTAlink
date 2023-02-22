@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { useColorScheme, StyleSheet } from "react-native";
 
 import Home from "./screens/Home";
 import Library from "./screens/Library";
@@ -10,8 +11,11 @@ import New from "./screens/New";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const colorScheme = useColorScheme();
+  const styles = colorScheme === "light" ? lightStyles : darkStyles;
+
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.background}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -27,22 +31,18 @@ export default function App() {
               iconName = focused ? "add-circle" : "add-circle-outline";
             }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={size} style={styles.text} />;
           },
-          headerStyle: {
-            backgroundColor: "#1D2935",
-          },
+          headerStyle: styles.background,
           headerShown: true,
           headerTitleAlign: "center",
-          headerTintColor: "#FFFFFF",
+          headerTintColor: styles.text.color,
           headerTitleStyle: {
             fontWeight: "bold",
           },
-          tabBarActiveTintColor: "#FFFFFF",
-          tabBarInactiveTintColor: "#EDEDED",
-          tabBarStyle: {
-            backgroundColor: "#1D2935",
-          },
+          tabBarActiveTintColor: styles.text.color,
+          tabBarInactiveTintColor: styles.text.color,
+          tabBarStyle: styles.background,
         })}
       >
         <Tab.Screen name="Home" component={Home} />
@@ -53,3 +53,21 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const lightStyles = StyleSheet.create({
+  background: {
+    backgroundColor: "#FFFFFF",
+  },
+  text: {
+    color: "#000000",
+  },
+});
+
+const darkStyles = StyleSheet.create({
+  background: {
+    backgroundColor: "#1D2935",
+  },
+  text: {
+    color: "#FFFFFF",
+  },
+});
