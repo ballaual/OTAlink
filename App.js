@@ -29,6 +29,15 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+          headerStyle: {
+            backgroundColor: "#1D2935",
+          },
+          headerShown: true,
+          headerTitleAlign: "center",
+          headerTintColor: "#FFFFFF",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
           tabBarActiveTintColor: "#FFFFFF",
           tabBarInactiveTintColor: "#EDEDED",
           tabBarStyle: {
@@ -36,66 +45,10 @@ export default function App() {
           },
         })}
       >
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            headerStyle: {
-              backgroundColor: "#1D2935",
-            },
-            headerShown: true,
-            headerTitleAlign: "center",
-            headerTintColor: "#FFFFFF",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Library"
-          component={Library}
-          options={{
-            headerStyle: {
-              backgroundColor: "#1D2935",
-            },
-            headerShown: true,
-            headerTitleAlign: "center",
-            headerTintColor: "#FFFFFF",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Favorites"
-          component={Favorites}
-          options={{
-            headerStyle: {
-              backgroundColor: "#1D2935",
-            },
-            headerShown: true,
-            headerTitleAlign: "center",
-            headerTintColor: "#FFFFFF",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
-        <Tab.Screen
-          name="New"
-          component={New}
-          options={{
-            headerStyle: {
-              backgroundColor: "#1D2935",
-            },
-            headerShown: true,
-            headerTitleAlign: "center",
-            headerTintColor: "#FFFFFF",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Library" component={Library} />
+        <Tab.Screen name="Favorites" component={Favorites} />
+        <Tab.Screen name="New" component={New} />
       </Tab.Navigator>
     </NavigationContainer>
   );
