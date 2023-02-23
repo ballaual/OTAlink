@@ -62,10 +62,7 @@ export default function Library() {
     const filtered = operations.filter(
       (operation) =>
         operation.title.toLowerCase().includes(text.toLowerCase()) ||
-        operation.description.toLowerCase().includes(text.toLowerCase()) ||
-        operation.indication.toLowerCase().includes(text.toLowerCase()) ||
-        operation.complications.toLowerCase().includes(text.toLowerCase()) ||
-        operation.instruments.toLowerCase().includes(text.toLowerCase())
+        operation.description.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredOperations(filtered);
   };
