@@ -1,7 +1,75 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TextInput,
+  useColorScheme,
+} from "react-native";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function Library() {
+  const [operations, setOperations] = useState([]);
+  const [filteredOperations, setFilteredOperations] = useState([]);
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    fetch(
+      "https://ballaual.de/wp-content/uploads/2023/02/operation_testing.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setOperations(data.operation);
+        setFilteredOperations(data.operation);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      fetch(
+        "https://ballaual.de/wp-content/uploads/2023/02/operation_testing.json"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setOperations(data.operation);
+          setFilteredOperations(data.operation);
+        })
+        .catch((error) => console.error(error));
+    }
+  }, [isFocused]);
+
+  const sortedOperations = filteredOperations.sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
+  const sections = [];
+  sortedOperations.forEach((operation) => {
+    if (!sections.some((section) => section.title === operation.title[0])) {
+      sections.push({
+        title: operation.title[0],
+        data: [operation],
+      });
+    } else {
+      const index = sections.findIndex(
+        (section) => section.title === operation.title[0]
+      );
+      sections[index].data.push(operation);
+    }
+  });
+
+  const handleFilter = (text) => {
+    const filtered = operations.filter(
+      (operation) =>
+        operation.title.toLowerCase().includes(text.toLowerCase()) ||
+        operation.description.toLowerCase().includes(text.toLowerCase()) ||
+        operation.indication.toLowerCase().includes(text.toLowerCase()) ||
+        operation.complications.toLowerCase().includes(text.toLowerCase()) ||
+        operation.instruments.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredOperations(filtered);
+  };
+
   const colorScheme = useColorScheme();
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
@@ -10,10 +78,32 @@ export default function Library() {
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
-      <View>
-        <Text style={[themeTextStyle]}>Sammlung</Text>
-      </View>
-      <StatusBar style="light" />
+      <TextInput
+        style={[styles.searchContainer, themeTextStyle]}
+        placeholder="Sammlung durchsuchen ..."
+        onChangeText={(text) => handleFilter(text)}
+      />
+      <FlatList
+        data={sections}
+        keyExtractor={(item, index) => `${item.title}-${index}`}
+        renderItem={({ item }) => (
+          <View>
+            <Text style={[styles.sectionHeader, themeTextStyle]}>
+              {item.title}
+            </Text>
+            {item.data.map((operation) => (
+              <View key={operation.id} style={styles.operationContainer}>
+                <Text style={[styles.operationTitle, themeTextStyle]}>
+                  {operation.title}
+                </Text>
+                <Text style={[styles.operationDescription, themeTextStyle]}>
+                  {operation.description}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+      />
     </View>
   );
 }
@@ -22,7 +112,48 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    paddingHorizontal: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  sectionHeader: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  operationContainer: {
+    marginBottom: 16,
+  },
+  operationTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 4,
+  },
+  operationDescription: {
+    fontSize: 16,
+    marginBottom: 8,
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#CFCFCF",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+    marginLeft: 8,
+    color: "000000",
   },
   lightContainer: {
     backgroundColor: "#FFFFFF",
