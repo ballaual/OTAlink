@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { useColorScheme, StyleSheet } from "react-native";
+import { useColorScheme, StyleSheet, Text } from "react-native";
 
 import Home from "./screens/Home";
 import Library from "./screens/Library";
@@ -18,7 +18,7 @@ export default function App() {
     <NavigationContainer style={styles.background}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({ focused, size }) => {
             let iconName;
 
             if (route.name === "Home") {
@@ -35,14 +35,49 @@ export default function App() {
           },
           headerStyle: styles.background,
           headerShown: true,
-          headerTitleAlign: "center",
           headerTintColor: styles.text.color,
+          headerTitleAlign: "center",
+          headerTitle: ({}) => {
+            let headerTitle;
+
+            if (route.name === "Home") {
+              headerTitle = "Start";
+            } else if (route.name === "Library") {
+              headerTitle = "Sammlung";
+            } else if (route.name === "Favorites") {
+              headerTitle = "Favoriten";
+            } else if (route.name === "New") {
+              headerTitle = "Neu";
+            }
+
+            return (
+              <Text style={(styles.labelText, styles.text)}>{headerTitle}</Text>
+            );
+          },
           headerTitleStyle: {
+            fontSize: 50,
             fontWeight: "bold",
           },
           tabBarActiveTintColor: styles.text.color,
           tabBarInactiveTintColor: styles.text.color,
           tabBarStyle: styles.background,
+          tabBarLabel: ({}) => {
+            let labelName;
+
+            if (route.name === "Home") {
+              labelName = "Start";
+            } else if (route.name === "Library") {
+              labelName = "Sammlung";
+            } else if (route.name === "Favorites") {
+              labelName = "Favoriten";
+            } else if (route.name === "New") {
+              labelName = "Neu";
+            }
+
+            return (
+              <Text style={(styles.labelText, styles.text)}>{labelName} </Text>
+            );
+          },
         })}
       >
         <Tab.Screen name="Home" component={Home} />
