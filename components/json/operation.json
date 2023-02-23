@@ -1,0 +1,37 @@
+{
+  "operation": [
+    {
+      "id": 1,
+      "title": "Konisation",
+      "description": "Entnahme eines Gewebekegels aus der Portio",
+      "indication": "Nicht krankhaftes Hervortreten des Zervixzylinderepithels auf der Portiooberfläche (Ektopie=unübliche Bildung von Gewebe im Muttermund)\\nAuffälliger PAP Abstrich\\nPAP IIID: Verdacht auf Entartung\\nPAP IV A: IV B weitergehende Krebsvorstufe",
+      "complications": "Nachblutungen direkt oder nach Abfallen des Schorfes (ca. 6 Tag)\\nZervixinsuffizienz",
+      "instruments": "Spekula und seitliche Spekula (Breisky)\\nKugelzangen\\nLanger Skalpellgriff\\nKornzangen\\nPinzette mittellang chirurgisch und anatomisch\\nSchere\\nNadelhalter\\nUterussonde\\nHegarstifte\\nKüretten\\nDiathermie evtl. Kugelansatz oder Schlingenansatz"
+    },
+    {
+      "id": 2,
+      "title": "Abort-Abrasio",
+      "description": "Absaugen oder Ausschaben eines schwangeren Uterus bis zur 12.-14. SSW"
+    },
+    {
+      "id": 3,
+      "title": "Abrasio und Kürettage",
+      "description": "Ausschabung eines nichtschwangeren Uterus zu diagnostischem oder therapeutischem Zweck mit scharfen Küretten"
+    },
+    {
+      "id": 4,
+      "title": "Marsupialisation",
+      "description": ""
+    },
+    {
+      "id": 5,
+      "title": "Zervixinsuffizienz",
+      "description": ""
+    },
+    {
+      "id": 6,
+      "title": "Herzschrittmacher",
+      "description": ""
+    }
+  ]
+}
