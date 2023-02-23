@@ -15,9 +15,7 @@ export default function Library() {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    fetch(
-      "https://ballaual.de/wp-content/uploads/2023/02/operation_testing.json"
-    )
+    fetch("https://ballaual.de/wp-content/uploads/operation.json")
       .then((response) => response.json())
       .then((data) => {
         setOperations(data.operation);
@@ -28,9 +26,7 @@ export default function Library() {
 
   useEffect(() => {
     if (isFocused) {
-      fetch(
-        "https://ballaual.de/wp-content/uploads/2023/02/operation_testing.json"
-      )
+      fetch("https://ballaual.de/wp-content/uploads/operation.json")
         .then((response) => response.json())
         .then((data) => {
           setOperations(data.operation);
