@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme, StyleSheet, Text } from "react-native";
 
 import Home from "./screens/Home";
-import Library from "./screens/Library";
+import Collection from "./screens/Collection";
 import Favorites from "./screens/Favorites";
 import New from "./screens/New";
 
@@ -23,7 +23,7 @@ export default function App() {
 
             if (route.name === "Home") {
               iconName = focused ? "home" : "home-outline";
-            } else if (route.name === "Library") {
+            } else if (route.name === "Collection") {
               iconName = focused ? "library" : "library-outline";
             } else if (route.name === "Favorites") {
               iconName = focused ? "heart" : "heart-outline";
@@ -42,7 +42,7 @@ export default function App() {
 
             if (route.name === "Home") {
               headerTitle = "Start";
-            } else if (route.name === "Library") {
+            } else if (route.name === "Collection") {
               headerTitle = "Sammlung";
             } else if (route.name === "Favorites") {
               headerTitle = "Favoriten";
@@ -66,7 +66,7 @@ export default function App() {
 
             if (route.name === "Home") {
               labelName = "Start";
-            } else if (route.name === "Library") {
+            } else if (route.name === "Collection") {
               labelName = "Sammlung";
             } else if (route.name === "Favorites") {
               labelName = "Favoriten";
@@ -81,7 +81,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Library" component={Library} />
+        <Tab.Screen name="Collection" component={Collection} />
         <Tab.Screen name="Favorites" component={Favorites} />
         <Tab.Screen name="New" component={New} />
       </Tab.Navigator>

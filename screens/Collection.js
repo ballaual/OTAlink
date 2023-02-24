@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 
-export default function Library() {
+export default function Collection() {
   const [operations, setOperations] = useState([]);
   const [filteredOperations, setFilteredOperations] = useState([]);
   const isFocused = useIsFocused();
