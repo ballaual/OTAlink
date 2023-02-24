@@ -61,13 +61,6 @@ export default function Library() {
   const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
-  const searchInput = ({ colorScheme }) => ({
-    flex: 1,
-    fontSize: 16,
-    marginLeft: 8,
-    color: colorScheme === "light" ? "#000000" : "#FFFFFF",
-  });
-
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <TextInput
