@@ -56,13 +56,22 @@ export default function Library() {
   const colorScheme = useColorScheme();
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeTextInputStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
   const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+
+  const searchInput = ({ colorScheme }) => ({
+    flex: 1,
+    fontSize: 16,
+    marginLeft: 8,
+    color: colorScheme === "light" ? "#000000" : "#FFFFFF",
+  });
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <TextInput
-        style={[styles.searchContainer, themeTextStyle]}
+        style={[styles.searchContainer, themeTextStyle, themeTextInputStyle]}
         placeholder="Sammlung durchsuchen ..."
         onChangeText={(text) => handleFilter(text)}
       />
@@ -136,7 +145,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     marginLeft: 8,
-    color: "000000",
   },
   lightContainer: {
     backgroundColor: "#FFFFFF",
@@ -149,5 +157,8 @@ const styles = StyleSheet.create({
   },
   darkThemeText: {
     color: "#FFFFFF",
+  },
+  darkThemeTextInput: {
+    color: "#000000",
   },
 });
