@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { useColorScheme, StyleSheet, Text } from "react-native";
+import { useColorScheme, Text } from "react-native";
+import { lightStyles, darkStyles } from "./styles/appStyles";
 
 import Home from "./screens/Home";
 import Collection from "./screens/Collection";
@@ -11,8 +12,7 @@ import New from "./screens/New";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const colorScheme = useColorScheme();
-  const styles = colorScheme === "light" ? lightStyles : darkStyles;
+  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
 
   return (
     <NavigationContainer style={styles.background}>
@@ -88,21 +88,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const lightStyles = StyleSheet.create({
-  background: {
-    backgroundColor: "#FFFFFF",
-  },
-  text: {
-    color: "#000000",
-  },
-});
-
-const darkStyles = StyleSheet.create({
-  background: {
-    backgroundColor: "#1D2935",
-  },
-  text: {
-    color: "#FFFFFF",
-  },
-});
