@@ -1,21 +1,16 @@
 {
   "cli": {
-    "version": ">= 3.7.2"
+    "version": ">= 3.7.2",
+    "appVersionSource": "local"
   },
   "build": {
     "preview": {
       "android": {
-        "buildType": "apk"
-      }
-    },
-    "preview2": {
-      "android": {
         "gradleCommand": ":app:assembleRelease"
       }
     },
-    "preview3": {
-      "developmentClient": true
-    },
-    "production": {}
+    "production": {
+      "autoIncrement": true
+    }
   }
 } 
