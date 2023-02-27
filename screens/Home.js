@@ -24,11 +24,9 @@ export default function Home({}) {
       <View>
         <Text style={[styles.description, themeTextStyle]}>
           Herzlich Willkommen bei OTAlink!{"\n"}
-          {"\n"}Zeile 2 Beschreibung.{"\n"}
-          {"\n"}Zeile 3 Beschreibung.{"\n"}
-          {"\n"}Zeile 4 Beschreibung.{"\n"}
-          {"\n"}Zeile 5 Beschreibung.{"\n"}
-          {"\n"}Zeile 6 Beschreibung.
+          {"\n"}Die mobile Datenbank für Operationsabläufe.{"\n"}
+          {"\n"}Fehler oder neue Abläufe können per Mail an:
+          otalink@infernalestube.de gesendet werden.{"\n"}
         </Text>
       </View>
       <StatusBar style="light" />
@@ -48,8 +46,8 @@ const styles = StyleSheet.create({
   },
   description: {
     marginTop: 40,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 10,
+    marginRight: 10,
     fontSize: 20,
   },
   lightContainer: {
