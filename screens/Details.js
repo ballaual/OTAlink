@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, useColorScheme } from "react-native";
+import { Text, View, useColorScheme, ScrollView } from "react-native";
 import styles from "../styles/screens/detailsStyles";
 
 export default function Details({ route }) {
@@ -31,7 +31,7 @@ export default function Details({ route }) {
   }
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
+    <ScrollView style={[styles.container, themeContainerStyle]}>
       <View style={styles.content}>
         <View style={styles.titleContainer}>
           <Text style={[styles.title, themeTextStyle]}>{operation.title}</Text>
@@ -70,6 +70,6 @@ export default function Details({ route }) {
           {operation.process}
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 }
