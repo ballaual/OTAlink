@@ -19,7 +19,7 @@ export default function Collection() {
 
   useEffect(() => {
     if (isFocused) {
-      fetch("https://ballaual.de/wp-content/uploads/operation.json", {
+      fetch("https://infernalestube.de/otalink/operation.json", {
         headers: {
           "Cache-Control": "no-cache",
         },
