@@ -64,6 +64,11 @@ export default function Details({ route }) {
             {operation.instruments}
           </Text>
         </View>
+        <View style={styles.separator} />
+        <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
+        <Text style={[styles.detailsText, themeTextStyle]}>
+          {operation.process}
+        </Text>
       </View>
     </View>
   );
