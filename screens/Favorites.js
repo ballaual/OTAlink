@@ -1,19 +1,19 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
 
 export default function Favorites() {
   const colorScheme = useColorScheme();
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeTextInputStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
   const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <View>
-        <Text style={[themeTextStyle]}>Favoriten</Text>
+        <Text style={[styles.comingSoon, themeTextStyle]}>coming soon</Text>
       </View>
-      <StatusBar style="light" />
     </View>
   );
 }
@@ -22,7 +22,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    fontSize: 100,
+  },
+  comingSoon: {
+    fontSize: 30,
   },
   lightContainer: {
     backgroundColor: "#FFFFFF",

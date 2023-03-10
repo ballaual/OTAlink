@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
 
 export default function New() {
@@ -13,7 +12,6 @@ export default function New() {
       <View>
         <Text style={[styles.comingSoon, themeTextStyle]}>coming soon</Text>
       </View>
-      <StatusBar style="light" />
     </View>
   );
 }
