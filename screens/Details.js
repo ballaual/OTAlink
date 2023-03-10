@@ -70,6 +70,7 @@ export default function Details({ route }) {
           {operation.opablauf}
         </Text>
       </View>
+      <View style={styles.separator} />
     </ScrollView>
   );
 }
