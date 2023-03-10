@@ -82,8 +82,9 @@ export default function Collection() {
       <FlatList
         data={sections}
         keyExtractor={(item, index) => `${item.title}-${index}`}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View>
+            {index > 0 && <View style={styles.sectionDivider}></View>}
             <Text style={[styles.sectionHeader, themeTextStyle]}>
               {item.title}
             </Text>

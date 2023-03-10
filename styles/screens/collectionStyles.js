@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
   darkThemeTextInput: {
     color: "#000000",
   },
+  sectionDivider: {
+    height: 1,
+    backgroundColor: "#CCCCCC",
+    marginVertical: 10,
+  },
 });
 
 export default styles;
