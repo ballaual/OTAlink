@@ -88,10 +88,10 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Collection" component={Collection} />
         <Tab.Screen name="Favorites" component={Favorites} />
-        <Tab.Screen name="Details" component={Details} />
         <Tab.Screen name="New" component={New} />
+        <Tab.Screen name="Collection" component={Collection} />
+        <Tab.Screen name="Details" component={Details} />
       </Tab.Navigator>
     </NavigationContainer>
   );
