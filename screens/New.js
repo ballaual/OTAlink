@@ -1,17 +1,20 @@
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { WebView } from "react-native-webview";
 
 export default function New() {
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
-
   return (
-    <View style={[styles.container, themeContainerStyle]}>
-      <View>
-        <Text style={[styles.comingSoon, themeTextStyle]}>coming soon</Text>
-      </View>
+    <View style={styles.container}>
+      <WebView
+        source={{
+          uri: "https://docs.google.com/forms/d/e/1FAIpQLSf5ha2BC2XLON8shFAegeDQV5cvxkVEWJdj-DCGy2xK4oNjYw/viewform?usp=sf_link",
+        }}
+        style={{ flex: 1 }}
+        startInLoadingState={true}
+        scalesPageToFit={true}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+      />
     </View>
   );
 }
@@ -19,23 +22,5 @@ export default function New() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 100,
-  },
-  comingSoon: {
-    fontSize: 30,
-  },
-  lightContainer: {
-    backgroundColor: "#FFFFFF",
-  },
-  darkContainer: {
-    backgroundColor: "#1D2935",
-  },
-  lightThemeText: {
-    color: "#000000",
-  },
-  darkThemeText: {
-    color: "#FFFFFF",
   },
 });
