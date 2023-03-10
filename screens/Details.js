@@ -34,40 +34,40 @@ export default function Details({ route }) {
     <ScrollView style={[styles.container, themeContainerStyle]}>
       <View style={styles.content}>
         <View style={styles.titleContainer}>
-          <Text style={[styles.title, themeTextStyle]}>{operation.title}</Text>
+          <Text style={[styles.title, themeTextStyle]}>{operation.titel}</Text>
         </View>
         <View style={[styles.descriptionContainer, themeContainerStyle]}>
           <Text style={[styles.detailsTitle, themeTextStyle]}>
             Beschreibung:
           </Text>
           <Text style={[styles.description, themeTextStyle]}>
-            {operation.description}
+            {operation.beschreibung}
           </Text>
         </View>
         <View style={styles.detailsContainer}>
           <Text style={[styles.detailsTitle, themeTextStyle]}>Indikation:</Text>
           <Text style={[styles.detailsText, themeTextStyle]}>
-            {operation.indication}
+            {operation.indikation}
           </Text>
           <View style={styles.separator} />
           <Text style={[styles.detailsTitle, themeTextStyle]}>
             Komplikationen:
           </Text>
           <Text style={[styles.detailsText, themeTextStyle]}>
-            {operation.complications}
+            {operation.komplikationen}
           </Text>
           <View style={styles.separator} />
           <Text style={[styles.detailsTitle, themeTextStyle]}>
             Instrumente:
           </Text>
           <Text style={[styles.detailsText, themeTextStyle]}>
-            {operation.instruments}
+            {operation.siebeinstrumente}
           </Text>
         </View>
         <View style={styles.separator} />
         <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
         <Text style={[styles.detailsText, themeTextStyle]}>
-          {operation.process}
+          {operation.opablauf}
         </Text>
       </View>
     </ScrollView>

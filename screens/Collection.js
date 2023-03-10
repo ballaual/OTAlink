@@ -34,18 +34,18 @@ export default function Collection() {
   }, [isFocused]);
 
   const sortedOperations = filteredOperations.sort((a, b) =>
-    a.title.localeCompare(b.title)
+    a.titel.localeCompare(b.titel)
   );
   const sections = [];
   sortedOperations.forEach((operation) => {
-    if (!sections.some((section) => section.title === operation.title[0])) {
+    if (!sections.some((section) => section.titel === operation.titel[0])) {
       sections.push({
-        title: operation.title[0],
+        titel: operation.titel[0],
         data: [operation],
       });
     } else {
       const index = sections.findIndex(
-        (section) => section.title === operation.title[0]
+        (section) => section.titel === operation.titel[0]
       );
       sections[index].data.push(operation);
     }
@@ -54,8 +54,8 @@ export default function Collection() {
   const handleFilter = (text) => {
     const filtered = operations.filter(
       (operation) =>
-        operation.title.toLowerCase().includes(text.toLowerCase()) ||
-        operation.description.toLowerCase().includes(text.toLowerCase())
+        operation.titel.toLowerCase().includes(text.toLowerCase()) ||
+        operation.beschreibung.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredOperations(filtered);
   };
@@ -81,12 +81,12 @@ export default function Collection() {
       />
       <FlatList
         data={sections}
-        keyExtractor={(item, index) => `${item.title}-${index}`}
+        keyExtractor={(item, index) => `${item.titel}-${index}`}
         renderItem={({ item, index }) => (
           <View>
             {index > 0 && <View style={styles.sectionDivider}></View>}
             <Text style={[styles.sectionHeader, themeTextStyle]}>
-              {item.title}
+              {item.titel}
             </Text>
             {item.data.map((operation) => (
               <TouchableOpacity
@@ -95,10 +95,10 @@ export default function Collection() {
                 onPress={() => handleOperationPress(operation)}
               >
                 <Text style={[styles.operationTitle, themeTextStyle]}>
-                  {operation.title}
+                  {operation.titel}
                 </Text>
                 <Text style={[styles.operationDescription, themeTextStyle]}>
-                  {operation.description}
+                  {operation.beschreibung}
                 </Text>
               </TouchableOpacity>
             ))}
