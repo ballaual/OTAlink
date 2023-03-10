@@ -1,37 +1,21 @@
-{
-  "operation": [
+{"operation": [
     {
-      "id": 1,
-      "title": "Konisation",
-      "description": "Entnahme eines Gewebekegels aus der Portio",
-      "indication": "Nicht krankhaftes Hervortreten des Zervixzylinderepithels auf der Portiooberfläche (Ektopie=unübliche Bildung von Gewebe im Muttermund) Auffälliger PAP Abstrich PAP IIID: Verdacht auf Entartung PAP IV A: IV B weitergehende Krebsvorstufe",
-      "complications": "Nachblutungen direkt oder nach Abfallen des Schorfes (ca. 6 Tag) Zervixinsuffizienz",
-      "instruments": "Spekula und seitliche Spekula (Breisky) Kugelzangen Langer Skalpellgriff Kornzangen Pinzette mittellang chirurgisch und anatomisch Schere Nadelhalter Uterussonde Hegarstifte Küretten Diathermie evtl. Kugelansatz oder Schlingenansatz"
+        "id": 1,
+        "zeitstempel": "2023-03-10T20:43:32.455Z",
+        "titel": "Zervixinsuffizienz/Cerclage",
+        "beschreibung": "Cerclage = operativer Muttermundverschluss",
+        "indikation": "• Insuffizienz des Cervix in der Schwangerschaft\n• Prophylaxe bei vorangegangenen Spätaborten\n• Therapie bei Eröffnung des inneren Muttermundes vor der 28. SSW",
+        "komplikationen": "Blutungen",
+        "siebeinstrumente": "• Spekula, Ovarfaßzangen\n• Tupfer, Nadelhalter, nicht resorbierbarer Polyesterfaden oder Shirodkar Band",
+        "opablauf": "OP-Ablauf nach McDonald (\"unblutige\" Methode):\n• Desinfektion und Abdecken\n• Anklemmen der Portio mit Ovarfaßzangen\n• Legen einer nicht resorbierbaren subkutanen Naht, die viermal (12, 9, 6, 3 Uhr) ausgestochen wird. Sie sollte aber nicht zu stark angezogen werden, um die Durchblutung zu gewährleisten (Tabakbeutelnaht)\n• Fadenentfernung möglichst nicht vor der 37. SSW\n-> Tokolyse Wehenhemmer 48h postop.\n\nOP-Ablauf nach Shirodkar (\"blutige Methode\"):\n• Scheidenhaut wird am Zervix inzidiert (Kolpotomie 2-3cm)\n• Blase + Rektum werden mit Präp. Tupfern hochgeschoben, damit Naht hoch angesetzt werden kann\n• Das Band oder Faden mit stumpfer Nadel werden dicht unter Portiohaut herumgeführt, Einstich bei 12 Uhr, evtl. einmal bei 6 Uhr ausstechen\n\nOP-Ablauf Totaler Muttermundverschluß nach Szendi:\n• Desinfektion und Abdecken\n• Seitliches Anhaken der Portio mit 2 Kugelzangen\n• Zirkuläres Umschneiden des Portioepithels und Deepithelialisierung mit der Skalpell bis zum äußeren Muttermund\n• Nochmalige Desinfektion nach Entfernung des Zervixschleims\n• Zweischichtige Aufeinandernähung der vorderen und hinteren Muttermundlippe mit resorbierbaren Einzelknopfnähten\n• Adaption des vorderen und hinteren Epithelrand durch querlaufende Intrakutannaht\n• Entfernung Intrakutannaht nach ca. 10 Tagen"
     },
     {
-      "id": 2,
-      "title": "Abort-Abrasio",
-      "description": "Absaugen oder Ausschaben eines schwangeren Uterus bis zur 12.-14. SSW"
-    },
-    {
-      "id": 3,
-      "title": "Abrasio und Kürettage",
-      "description": "Ausschabung eines nichtschwangeren Uterus zu diagnostischem oder therapeutischem Zweck mit scharfen Küretten"
-    },
-    {
-      "id": 4,
-      "title": "Marsupialisation",
-      "description": ""
-    },
-    {
-      "id": 5,
-      "title": "Zervixinsuffizienz",
-      "description": ""
-    },
-    {
-      "id": 6,
-      "title": "Herzschrittmacher",
-      "description": "Test"
+        "id": 2,
+        "titel": "Konisation",
+        "beschreibung": "Entnahme eines Gewebekegels aus der Portio",
+        "indikation": "Nicht krankhaftes Hervortreten des Zervixzylinderepithels auf der Portiooberfläche (Ektopie=unübliche Bildung von Gewebe im Muttermund) Auffälliger PAP Abstrich PAP IIID: Verdacht auf Entartung PAP IV A: IV B weitergehende Krebsvorstufe",
+        "komplikationen": "Nachblutungen direkt oder nach Abfallen des Schorfes (ca. 6 Tag) Zervixinsuffizienz",
+        "siebeinstrumente": "Spekula und seitliche Spekula (Breisky) Kugelzangen Langer Skalpellgriff Kornzangen Pinzette mittellang chirurgisch und anatomisch Schere Nadelhalter Uterussonde Hegarstifte Küretten Diathermie evtl. Kugelansatz oder Schlingenansatz",
+        "opablauf": "• Desinfektion, evtl. Einmalkatheterisierung und Abdecken \n• Portioeinstellung\n• Evtl. Infiltration eines vasokonstriktorisches Medikamentes (Adrenalin verdünnt)\n• Anfärben der Portio mit Jodlösung oder Peressigsäure, krankhaftes Gewebe bleibt weiß\n• Anklemmen der Portio\n• Haltfäden am Zervix 3 und 9 Uhr\n• Dilatation mit Hegarstiften bis 8 oder 8,5mm\n• Umschneiden der Portio mit Skalpell oder HF (junge Frauen ein breiter, flacher Konus  –Kinderwunsch, bei älteren Frauen ein hoher, schmaler Konus)\n• Markieren des Kegels bis 12 Uhr mittels eines Faden\n• Frakt. Abrasio\n• Blutstillung (evtl. mit Kugelelektrode und umstechen)\n• Evtl. Tamponade oder DK legen je nach Standard"
     }
-  ]
-}
+]}
