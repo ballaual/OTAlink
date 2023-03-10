@@ -31,7 +31,7 @@ export default function Home({}) {
           otalink@infernalestube.de gesendet werden.{"\n"}
         </Text>
       </View>
-      <StatusBar style="light" />
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
     </View>
   );
 }
