@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, FlatList, TextInput, useColorScheme } from "react-native";
+import {
+  Text,
+  View,
+  FlatList,
+  TextInput,
+  useColorScheme,
+  TouchableOpacity,
+} from "react-native";
 import { useIsFocused } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import styles from "../styles/screens/collectionStyles";
 
 export default function Collection() {
   const [operations, setOperations] = useState([]);
   const [filteredOperations, setFilteredOperations] = useState([]);
   const isFocused = useIsFocused();
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (isFocused) {
-      fetch("https://ballaual.de/wp-content/uploads/operation.json")
+      fetch("https://ballaual.de/wp-content/uploads/operation.json", {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           setOperations(data.operation);
@@ -55,6 +68,10 @@ export default function Collection() {
   const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
+  const handleOperationPress = (operation) => {
+    navigation.navigate("Details", { operation });
+  };
+
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <TextInput
@@ -71,14 +88,18 @@ export default function Collection() {
               {item.title}
             </Text>
             {item.data.map((operation) => (
-              <View key={operation.id} style={styles.operationContainer}>
+              <TouchableOpacity
+                key={operation.id}
+                style={styles.operationContainer}
+                onPress={() => handleOperationPress(operation)}
+              >
                 <Text style={[styles.operationTitle, themeTextStyle]}>
                   {operation.title}
                 </Text>
                 <Text style={[styles.operationDescription, themeTextStyle]}>
                   {operation.description}
                 </Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         )}
