@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
   },
   description: {
     marginTop: 40,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 15,
+    marginRight: 15,
     fontSize: 20,
   },
   lightContainer: {
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
   },
   darkThemeText: {
     color: "#FFFFFF",
+  },
+  descriptionLink: {
+    color: "#007AFF",
+    textDecorationLine: "underline",
+    fontSize: 20,
   },
 });
 
