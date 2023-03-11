@@ -21,6 +21,7 @@ import Sonstiges from "./navigation/subTabs/Sonstiges";
 import Unfallchirurgie from "./navigation/subTabs/Unfallchirurgie";
 import Urologie from "./navigation/subTabs/Urologie";
 import Details from "./navigation/subTabs/Details";
+import Info from "./navigation/bottomTabs/Info";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -63,7 +64,7 @@ export default function App() {
               iconName = focused ? "library" : "library-outline";
             } else if (route.name === "Favorites") {
               iconName = focused ? "heart" : "heart-outline";
-            } else if (route.name === "Details") {
+            } else if (route.name === "Info") {
               iconName = focused ? "information" : "information-outline";
             } else if (route.name === "New") {
               iconName = focused ? "add-circle" : "add-circle-outline";
@@ -84,8 +85,8 @@ export default function App() {
               headerTitle = "Sammlung";
             } else if (route.name === "Favorites") {
               headerTitle = "Favoriten";
-            } else if (route.name === "Details") {
-              headerTitle = "Details";
+            } else if (route.name === "Info") {
+              headerTitle = "Informationen";
             } else if (route.name === "New") {
               headerTitle = "Neu";
             }
@@ -110,8 +111,8 @@ export default function App() {
               labelName = "Sammlung";
             } else if (route.name === "Favorites") {
               labelName = "Favoriten";
-            } else if (route.name === "Details") {
-              labelName = "Details";
+            } else if (route.name === "Info") {
+              labelName = "Infos";
             } else if (route.name === "New") {
               labelName = "Neu";
             }
@@ -123,9 +124,10 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Collection" component={CollectionStack} />
         <Tab.Screen name="Favorites" component={Favorites} />
         <Tab.Screen name="New" component={New} />
-        <Tab.Screen name="Collection" component={CollectionStack} />
+        <Tab.Screen name="Info" component={Info} />
       </Tab.Navigator>
     </NavigationContainer>
   );
