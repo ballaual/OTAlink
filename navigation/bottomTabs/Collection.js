@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
-import styles from "../styles/screens/collectionStyles";
+import styles from "../../styles/screens/collectionStyles";
 
 export default function Collection() {
   const [operations, setOperations] = useState([]);

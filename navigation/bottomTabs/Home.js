@@ -1,10 +1,10 @@
 import { StatusBar, Linking } from "react-native";
 import { Text, View, Image, useColorScheme } from "react-native";
 import React from "react";
-import styles from "../styles/screens/homeStyles";
+import styles from "../../styles/screens/homeStyles";
 import Constants from "expo-constants";
 
-const icon = require("../assets/icon.png");
+const icon = require("../../assets/icon.png");
 
 export default function Home({}) {
   const colorScheme = useColorScheme();

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, useColorScheme, ScrollView } from "react-native";
 import { format } from "date-fns";
-import styles from "../styles/screens/detailsStyles";
+import styles from "../../styles/screens/detailsStyles";
 
 export default function Details({ route }) {
   const colorScheme = useColorScheme();

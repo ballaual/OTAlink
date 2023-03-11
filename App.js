@@ -4,11 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme, Text } from "react-native";
 import { lightStyles, darkStyles } from "./styles/appStyles";
 
-import Home from "./screens/Home";
-import Collection from "./screens/Collection";
-import Favorites from "./screens/Favorites";
-import New from "./screens/New";
-import Details from "./screens/Details";
+import Home from "./navigation/bottomTabs/Home";
+import Collection from "./navigation/bottomTabs/Collection";
+import Favorites from "./navigation/bottomTabs/Favorites";
+import New from "./navigation/bottomTabs/New";
+import Details from "./navigation/bottomTabs/Details";
 
 const Tab = createBottomTabNavigator();
 
