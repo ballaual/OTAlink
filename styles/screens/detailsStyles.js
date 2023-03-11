@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 16,
   },
+  detailsTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
   sectionHeader: {
     fontSize: 18,
     fontWeight: "bold",

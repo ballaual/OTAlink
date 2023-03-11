@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, useColorScheme, ScrollView } from "react-native";
+import { format } from "date-fns";
 import styles from "../styles/screens/detailsStyles";
 
 export default function Details({ route }) {
@@ -29,6 +30,9 @@ export default function Details({ route }) {
       </View>
     );
   }
+
+  const timestampDate = new Date(operation.zeitstempel);
+  const formattedTimestamp = format(timestampDate, "dd.MM.yyyy - HH:mm");
 
   return (
     <ScrollView style={[styles.container, themeContainerStyle]}>
@@ -68,6 +72,15 @@ export default function Details({ route }) {
         <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
         <Text style={[styles.detailsText, themeTextStyle]}>
           {operation.opablauf}
+        </Text>
+      </View>
+      <View style={styles.separator} />
+      <View style={[styles.descriptionContainer, themeContainerStyle]}>
+        <Text style={[styles.detailsTitle, themeTextStyle]}>
+          Letzte Änderung:
+        </Text>
+        <Text style={[styles.description, themeTextStyle]}>
+          {formattedTimestamp}
         </Text>
       </View>
       <View style={styles.separator} />
