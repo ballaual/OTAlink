@@ -1,65 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
+  StyleSheet,
   Text,
   View,
-  FlatList,
-  TextInput,
   useColorScheme,
+  FlatList,
   TouchableOpacity,
 } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
-import styles from "../../styles/screens/collectionStyles";
 
 export default function Collection() {
-  const [operations, setOperations] = useState([]);
-  const [filteredOperations, setFilteredOperations] = useState([]);
-  const isFocused = useIsFocused();
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    if (isFocused) {
-      fetch("https://infernalestube.de/otalink/operation.json", {
-        headers: {
-          "Cache-Control": "no-cache",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setOperations(data.operation);
-          setFilteredOperations(data.operation);
-        })
-        .catch((error) => console.error(error));
-    }
-  }, [isFocused]);
-
-  const sortedOperations = filteredOperations.sort((a, b) =>
-    a.titel.localeCompare(b.titel)
-  );
-  const sections = [];
-  sortedOperations.forEach((operation) => {
-    if (!sections.some((section) => section.titel === operation.titel[0])) {
-      sections.push({
-        titel: operation.titel[0],
-        data: [operation],
-      });
-    } else {
-      const index = sections.findIndex(
-        (section) => section.titel === operation.titel[0]
-      );
-      sections[index].data.push(operation);
-    }
-  });
-
-  const handleFilter = (text) => {
-    const filtered = operations.filter(
-      (operation) =>
-        operation.titel.toLowerCase().includes(text.toLowerCase()) ||
-        operation.beschreibung.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredOperations(filtered);
-  };
-
   const colorScheme = useColorScheme();
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
@@ -68,43 +18,72 @@ export default function Collection() {
   const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
-  const handleOperationPress = (operation) => {
-    navigation.navigate("Details", { operation });
-  };
+  const navigation = useNavigation();
+
+  const buttons = [
+    { id: "1", title: "Allgemeinchirurgie", screen: "Allgemeinchirurgie" },
+    { id: "2", title: "Gefäßchirurgie", screen: "Gefäßchirurgie" },
+    { id: "3", title: "Gynäkologie", screen: "Gynäkologie" },
+    { id: "4", title: "Kardiochirurgie", screen: "Kardiochirurgie" },
+    { id: "5", title: "Kinderchirurgie", screen: "Kinderchirurgie" },
+    { id: "6", title: "Neurochirurgie", screen: "Neurochirurgie" },
+    { id: "7", title: "Orthopädie", screen: "Orthopädie" },
+    { id: "8", title: "Sonstiges", screen: "Sonstiges" },
+    { id: "9", title: "Unfallchirurgie", screen: "Unfallchirurgie" },
+    { id: "10", title: "Urologie", screen: "Urologie" },
+  ];
+
+  const renderButton = ({ item }) => (
+    <TouchableOpacity
+      style={styles.buttonContainer}
+      onPress={() => navigation.navigate(item.screen)}
+    >
+      <Text style={styles.buttonTitle}>{item.title}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
-      <TextInput
-        style={[styles.searchContainer, themeTextStyle, themeTextInputStyle]}
-        placeholder="Sammlung durchsuchen ..."
-        onChangeText={(text) => handleFilter(text)}
-      />
       <FlatList
-        data={sections}
-        keyExtractor={(item, index) => `${item.titel}-${index}`}
-        renderItem={({ item, index }) => (
-          <View>
-            {index > 0 && <View style={styles.sectionDivider}></View>}
-            <Text style={[styles.sectionHeader, themeTextStyle]}>
-              {item.titel}
-            </Text>
-            {item.data.map((operation) => (
-              <TouchableOpacity
-                key={operation.id}
-                style={styles.operationContainer}
-                onPress={() => handleOperationPress(operation)}
-              >
-                <Text style={[styles.operationTitle, themeTextStyle]}>
-                  {operation.titel}
-                </Text>
-                <Text style={[styles.operationDescription, themeTextStyle]}>
-                  {operation.beschreibung}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
+        data={buttons}
+        numColumns={2}
+        keyExtractor={(item) => item.id}
+        renderItem={renderButton}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+    padding: 20,
+    backgroundColor: "#1D2935",
+    borderRadius: 10,
+    width: "40%",
+    height: 100,
+  },
+  buttonTitle: {
+    fontSize: 16,
+    color: "#FFFFFF",
+  },
+  lightContainer: {
+    backgroundColor: "#FFFFFF",
+  },
+  darkContainer: {
+    backgroundColor: "#1D2935",
+  },
+  lightThemeText: {
+    color: "#000000",
+  },
+  darkThemeText: {
+    color: "#FFFFFF",
+  },
+});

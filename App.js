@@ -1,4 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme, Text } from "react-native";
@@ -10,11 +11,44 @@ import Favorites from "./navigation/bottomTabs/Favorites";
 import New from "./navigation/bottomTabs/New";
 import Details from "./navigation/bottomTabs/Details";
 
+import Allgemeinchirurgie from "./navigation/buttons/Allgemeinchirurgie";
+import Kardiochirurgie from "./navigation/buttons/Kardiochirurgie";
+import Gefäßchirurgie from "./navigation/buttons/Gefäßchirurgie";
+import Gynäkologie from "./navigation/buttons/Gynäkologie";
+import Kinderchirurgie from "./navigation/buttons/Kinderchirurgie";
+import Neurochirurgie from "./navigation/buttons/Neurochirurgie";
+import Orthopädie from "./navigation/buttons/Orthopädie";
+import Sonstiges from "./navigation/buttons/Sonstiges";
+import Unfallchirurgie from "./navigation/buttons/Unfallchirurgie";
+import Urologie from "./navigation/buttons/Urologie";
+
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function CollectionStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Sammlung"
+        component={Collection}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Allgemeinchirurgie" component={Allgemeinchirurgie} />
+      <Stack.Screen name="Kardiochirurgie" component={Kardiochirurgie} />
+      <Stack.Screen name="Kinderchirurgie" component={Kinderchirurgie} />
+      <Stack.Screen name="Gefäßchirurgie" component={Gefäßchirurgie} />
+      <Stack.Screen name="Gynäkologie" component={Gynäkologie} />
+      <Stack.Screen name="Neurochirurgie" component={Neurochirurgie} />
+      <Stack.Screen name="Orthopädie" component={Orthopädie} />
+      <Stack.Screen name="Sonstiges" component={Sonstiges} />
+      <Stack.Screen name="Unfallchirurgie" component={Unfallchirurgie} />
+      <Stack.Screen name="Urologie" component={Urologie} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
-
   return (
     <NavigationContainer style={styles.background}>
       <Tab.Navigator
@@ -90,7 +124,7 @@ export default function App() {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Favorites" component={Favorites} />
         <Tab.Screen name="New" component={New} />
-        <Tab.Screen name="Collection" component={Collection} />
+        <Tab.Screen name="Collection" component={CollectionStack} />
         <Tab.Screen name="Details" component={Details} />
       </Tab.Navigator>
     </NavigationContainer>

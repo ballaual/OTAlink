@@ -11,7 +11,7 @@ import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "../../styles/screens/collectionStyles";
 
-export default function Gynäkologie() {
+export default function Kardiochirurgie() {
   const [operations, setOperations] = useState([]);
   const [filteredOperations, setFilteredOperations] = useState([]);
   const isFocused = useIsFocused();
@@ -27,7 +27,7 @@ export default function Gynäkologie() {
         .then((response) => response.json())
         .then((data) => {
           const filteredData = data.operation.filter(
-            (operation) => operation.fachgebiet === "Gynäkologie"
+            (operation) => operation.fachgebiet === "Kardiochirurgie"
           );
           setOperations(filteredData);
           setFilteredOperations(filteredData);
