@@ -14,6 +14,7 @@ export default function New() {
         scalesPageToFit={true}
         javaScriptEnabled={true}
         domStorageEnabled={true}
+        cacheEnabled={false}
       />
     </View>
   );
