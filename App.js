@@ -9,7 +9,7 @@ import Home from "./navigation/bottomTabs/Home";
 import Collection from "./navigation/bottomTabs/Collection";
 import Favorites from "./navigation/bottomTabs/Favorites";
 import New from "./navigation/bottomTabs/New";
-import Details from "./navigation/bottomTabs/Details";
+import Details from "./navigation/buttons/Details";
 
 import Allgemeinchirurgie from "./navigation/buttons/Allgemeinchirurgie";
 import Kardiochirurgie from "./navigation/buttons/Kardiochirurgie";
@@ -43,6 +43,7 @@ function CollectionStack() {
       <Stack.Screen name="Sonstiges" component={Sonstiges} />
       <Stack.Screen name="Unfallchirurgie" component={Unfallchirurgie} />
       <Stack.Screen name="Urologie" component={Urologie} />
+      <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
   );
 }
@@ -125,7 +126,6 @@ export default function App() {
         <Tab.Screen name="Favorites" component={Favorites} />
         <Tab.Screen name="New" component={New} />
         <Tab.Screen name="Collection" component={CollectionStack} />
-        <Tab.Screen name="Details" component={Details} />
       </Tab.Navigator>
     </NavigationContainer>
   );
