@@ -87,8 +87,8 @@ export default function Urologie() {
       {filteredOperations.length === 0 ? (
         <Text style={[styles.noResults, themeTextStyle]}>
           Es sind zur Zeit keine Datensätze für diesen Fachbereich hinterlegt.
-          Reiche jetzt einen OP-Ablauf ein oder schaue zu einem späteren
-          Zeitpunkt wieder vorbei.
+          Reichen Sie jetzt einen OP-Ablauf ein oder schauen Sie zu einem
+          späteren Zeitpunkt wieder vorbei.
         </Text>
       ) : (
         <FlatList
