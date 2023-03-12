@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import styles from "../../styles/screens/collectionStyles";
 
 export default function Collection() {
   const colorScheme = useColorScheme();
@@ -58,44 +59,3 @@ export default function Collection() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 10,
-    padding: 20,
-    backgroundColor: "#1D2935",
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#9E9E9E",
-    width: 180,
-    height: 75,
-  },
-  buttonTitle: {
-    fontSize: 16,
-    color: "#FFFFFF",
-  },
-  lightContainer: {
-    backgroundColor: "#FFFFFF",
-  },
-  darkContainer: {
-    backgroundColor: "#1D2935",
-  },
-  lightThemeText: {
-    color: "#000000",
-  },
-  darkThemeText: {
-    color: "#FFFFFF",
-  },
-  headerText: {
-    fontSize: 16,
-    textAlign: "center",
-    marginVertical: 25,
-  },
-});

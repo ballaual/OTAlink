@@ -5,47 +5,22 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-  sectionHeader: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 8,
-  },
-  operationContainer: {
-    marginBottom: 16,
-  },
-  operationTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  operationDescription: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  searchContainer: {
-    flexDirection: "row",
+  buttonContainer: {
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    margin: 10,
+    padding: 20,
+    backgroundColor: "#1D2935",
+    borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#CFCFCF",
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginBottom: 20,
-    marginTop: 20,
-    height: 48,
+    borderColor: "#9E9E9E",
+    width: 180,
+    height: 75,
   },
-  searchInput: {
-    flex: 1,
+  buttonTitle: {
     fontSize: 16,
-    marginLeft: 8,
+    color: "#FFFFFF",
   },
   lightContainer: {
     backgroundColor: "#FFFFFF",
@@ -59,13 +34,10 @@ const styles = StyleSheet.create({
   darkThemeText: {
     color: "#FFFFFF",
   },
-  darkThemeTextInput: {
-    color: "#000000",
-  },
-  sectionDivider: {
-    height: 1,
-    backgroundColor: "#CCCCCC",
-    marginVertical: 10,
+  headerText: {
+    fontSize: 16,
+    textAlign: "center",
+    marginVertical: 25,
   },
 });
 
