@@ -35,20 +35,25 @@ export default function Collection() {
 
   const renderButton = ({ item }) => (
     <TouchableOpacity
-      style={styles.buttonContainer}
+      style={[styles.buttonContainer, themeContainerStyle]}
       onPress={() => navigation.navigate(item.screen)}
     >
-      <Text style={styles.buttonTitle}>{item.title}</Text>
+      <Text style={[styles.buttonTitle, themeTextStyle]}>{item.title}</Text>
     </TouchableOpacity>
   );
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
+      <Text style={[styles.headerText, themeTextStyle]}>
+        Bitte wählen Sie einen Fachbereich aus, um für diesen OP-Abläufe
+        angezeigt zu bekommen.
+      </Text>
       <FlatList
         data={buttons}
         numColumns={2}
         keyExtractor={(item) => item.id}
         renderItem={renderButton}
+        contentContainerStyle={styles.buttonsContainer}
       />
     </View>
   );
@@ -67,8 +72,10 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#1D2935",
     borderRadius: 10,
-    width: "40%",
-    height: 100,
+    borderWidth: 1,
+    borderColor: "#9E9E9E",
+    width: 180,
+    height: 75,
   },
   buttonTitle: {
     fontSize: 16,
@@ -85,5 +92,10 @@ const styles = StyleSheet.create({
   },
   darkThemeText: {
     color: "#FFFFFF",
+  },
+  headerText: {
+    fontSize: 16,
+    textAlign: "center",
+    marginVertical: 25,
   },
 });
