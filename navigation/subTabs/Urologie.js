@@ -77,37 +77,47 @@ export default function Urologie() {
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
-      <TextInput
-        style={[styles.searchContainer, themeTextStyle, themeTextInputStyle]}
-        placeholder="Sammlung durchsuchen ..."
-        onChangeText={(text) => handleFilter(text)}
-      />
-      <FlatList
-        data={sections}
-        keyExtractor={(item, index) => `${item.titel}-${index}`}
-        renderItem={({ item, index }) => (
-          <View>
-            {index > 0 && <View style={styles.sectionDivider}></View>}
-            <Text style={[styles.sectionHeader, themeTextStyle]}>
-              {item.titel}
-            </Text>
-            {item.data.map((operation) => (
-              <TouchableOpacity
-                key={operation.id}
-                style={styles.operationContainer}
-                onPress={() => handleOperationPress(operation)}
-              >
-                <Text style={[styles.operationTitle, themeTextStyle]}>
-                  {operation.titel}
-                </Text>
-                <Text style={[styles.operationDescription, themeTextStyle]}>
-                  {operation.beschreibung}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
-      />
+      {filteredOperations.length > 0 && (
+        <TextInput
+          style={[styles.searchContainer, themeTextStyle, themeTextInputStyle]}
+          placeholder="Sammlung durchsuchen ..."
+          onChangeText={(text) => handleFilter(text)}
+        />
+      )}
+      {filteredOperations.length === 0 ? (
+        <Text style={[styles.noResults, themeTextStyle]}>
+          Es sind zur Zeit keine Datensätze für diesen Fachbereich hinterlegt.
+          Reiche jetzt einen OP-Ablauf ein oder schaue zu einem späteren
+          Zeitpunkt wieder vorbei.
+        </Text>
+      ) : (
+        <FlatList
+          data={sections}
+          keyExtractor={(item, index) => `${item.titel}-${index}`}
+          renderItem={({ item, index }) => (
+            <View>
+              {index > 0 && <View style={styles.sectionDivider}></View>}
+              <Text style={[styles.sectionHeader, themeTextStyle]}>
+                {item.titel}
+              </Text>
+              {item.data.map((operation) => (
+                <TouchableOpacity
+                  key={operation.id}
+                  style={styles.operationContainer}
+                  onPress={() => handleOperationPress(operation)}
+                >
+                  <Text style={[styles.operationTitle, themeTextStyle]}>
+                    {operation.titel}
+                  </Text>
+                  <Text style={[styles.operationDescription, themeTextStyle]}>
+                    {operation.beschreibung}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        />
+      )}
     </View>
   );
 }
