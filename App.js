@@ -1,21 +1,19 @@
-import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { lightStyles, darkStyles } from "./styles/appStyles";
-import { useColorScheme, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useColorScheme, Text, TouchableOpacity } from "react-native";
+import { lightStyles, darkStyles } from "./styles/appStyles";
 
 import Home from "./navigation/bottomTabs/Home";
 import Collection from "./navigation/bottomTabs/Collection";
 import Favorites from "./navigation/bottomTabs/Favorites";
 import New from "./navigation/bottomTabs/New";
-import Info from "./navigation/bottomTabs/Info";
 
 import Allgemeinchirurgie from "./navigation/subTabs/Allgemeinchirurgie";
+import Kardiochirurgie from "./navigation/subTabs/Kardiochirurgie";
 import Gefäßchirurgie from "./navigation/subTabs/Gefäßchirurgie";
 import Gynäkologie from "./navigation/subTabs/Gynäkologie";
-import Kardiochirurgie from "./navigation/subTabs/Kardiochirurgie";
 import Kinderchirurgie from "./navigation/subTabs/Kinderchirurgie";
 import Neurochirurgie from "./navigation/subTabs/Neurochirurgie";
 import Orthopädie from "./navigation/subTabs/Orthopädie";
@@ -23,16 +21,15 @@ import Sonstiges from "./navigation/subTabs/Sonstiges";
 import Unfallchirurgie from "./navigation/subTabs/Unfallchirurgie";
 import Urologie from "./navigation/subTabs/Urologie";
 import Details from "./navigation/subTabs/Details";
+import Info from "./navigation/bottomTabs/Info";
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-function CollectionStack() {
+function CollectionStack({ navigation }) {
   const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
-  const CollectionStack = createStackNavigator();
-
   return (
-    <CollectionStack.Navigator
+    <Stack.Navigator
       screenOptions={{
         headerShown: true,
         headerStyle: styles.background,
@@ -42,146 +39,105 @@ function CollectionStack() {
         ),
       }}
     >
-      <CollectionStack.Screen
-        name="Sammlung"
-        component={Collection}
-        options={{ headerShown: true }}
-      />
-      <CollectionStack.Screen
-        name="Allgemeinchirurgie"
-        component={Allgemeinchirurgie}
-      />
-      <CollectionStack.Screen
-        name="Gefäßchirurgie"
-        component={Gefäßchirurgie}
-      />
-      <CollectionStack.Screen name="Gynäkologie" component={Gynäkologie} />
-      <CollectionStack.Screen
-        name="Kardiochirurgie"
-        component={Kardiochirurgie}
-      />
-      <CollectionStack.Screen
-        name="Kinderchirurgie"
-        component={Kinderchirurgie}
-      />
-      <CollectionStack.Screen
-        name="Neurochirurgie"
-        component={Neurochirurgie}
-      />
-      <CollectionStack.Screen name="Orthopädie" component={Orthopädie} />
-      <CollectionStack.Screen name="Sonstiges" component={Sonstiges} />
-      <CollectionStack.Screen
-        name="Unfallchirurgie"
-        component={Unfallchirurgie}
-      />
-      <CollectionStack.Screen name="Urologie" component={Urologie} />
-
-      <CollectionStack.Screen name="Details" component={Details} />
-    </CollectionStack.Navigator>
+      <Stack.Screen name="Sammlung" component={Collection} />
+      <Stack.Screen name="Allgemeinchirurgie" component={Allgemeinchirurgie} />
+      <Stack.Screen name="Kardiochirurgie" component={Kardiochirurgie} />
+      <Stack.Screen name="Kinderchirurgie" component={Kinderchirurgie} />
+      <Stack.Screen name="Gefäßchirurgie" component={Gefäßchirurgie} />
+      <Stack.Screen name="Gynäkologie" component={Gynäkologie} />
+      <Stack.Screen name="Neurochirurgie" component={Neurochirurgie} />
+      <Stack.Screen name="Orthopädie" component={Orthopädie} />
+      <Stack.Screen name="Sonstiges" component={Sonstiges} />
+      <Stack.Screen name="Unfallchirurgie" component={Unfallchirurgie} />
+      <Stack.Screen name="Urologie" component={Urologie} />
+      <Stack.Screen name="Details" component={Details} />
+    </Stack.Navigator>
   );
 }
 
-function TabNavigator() {
+export default function App() {
   const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, size }) => {
-          let iconName;
+    <NavigationContainer style={styles.background}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, size }) => {
+            let iconName;
 
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Collection") {
-            iconName = focused ? "library" : "library-outline";
-          } else if (route.name === "Favorites") {
-            iconName = focused ? "heart" : "heart-outline";
-          } else if (route.name === "Info") {
-            iconName = focused
-              ? "information-circle"
-              : "information-circle-outline";
-          } else if (route.name === "New") {
-            iconName = focused ? "add-circle" : "add-circle-outline";
-          }
+            if (route.name === "Home") {
+              iconName = focused ? "home" : "home-outline";
+            } else if (route.name === "Collection") {
+              iconName = focused ? "library" : "library-outline";
+            } else if (route.name === "Favorites") {
+              iconName = focused ? "heart" : "heart-outline";
+            } else if (route.name === "Info") {
+              iconName = focused
+                ? "information-circle"
+                : "information-circle-outline";
+            } else if (route.name === "New") {
+              iconName = focused ? "add-circle" : "add-circle-outline";
+            }
 
-          return <Ionicons name={iconName} size={size} style={styles.text} />;
-        },
-        headerStyle: styles.background,
-        headerTitle: ({}) => {
-          let headerTitle;
+            return <Ionicons name={iconName} size={size} style={styles.text} />;
+          },
+          headerStyle: styles.background,
+          headerTitle: ({}) => {
+            let headerTitle;
 
-          if (route.name === "Home") {
-            headerTitle = "Start";
-          } else if (route.name === "Collection") {
-            headerTitle = "Sammlung";
-          } else if (route.name === "Favorites") {
-            headerTitle = "Favoriten";
-          } else if (route.name === "Info") {
-            headerTitle = "Informationen";
-          } else if (route.name === "New") {
-            headerTitle = "Neu";
-          }
+            if (route.name === "Home") {
+              headerTitle = "Start";
+            } else if (route.name === "Collection") {
+              headerTitle = "Sammlung";
+            } else if (route.name === "Favorites") {
+              headerTitle = "Favoriten";
+            } else if (route.name === "Info") {
+              headerTitle = "Informationen";
+            } else if (route.name === "New") {
+              headerTitle = "Neu";
+            }
 
-          return <Text style={styles.text}>{headerTitle}</Text>;
-        },
-        tabBarStyle: styles.background,
-        tabBarLabel: ({}) => {
-          let labelName;
+            return <Text style={styles.text}>{headerTitle}</Text>;
+          },
+          tabBarStyle: styles.background,
+          tabBarLabel: ({}) => {
+            let labelName;
 
-          if (route.name === "Home") {
-            labelName = "Start";
-          } else if (route.name === "Collection") {
-            labelName = "Sammlung";
-          } else if (route.name === "Favorites") {
-            labelName = "Favoriten";
-          } else if (route.name === "Info") {
-            labelName = "Infos";
-          } else if (route.name === "New") {
-            labelName = "Neu";
-          }
+            if (route.name === "Home") {
+              labelName = "Start";
+            } else if (route.name === "Collection") {
+              labelName = "Sammlung";
+            } else if (route.name === "Favorites") {
+              labelName = "Favoriten";
+            } else if (route.name === "Info") {
+              labelName = "Infos";
+            } else if (route.name === "New") {
+              labelName = "Neu";
+            }
 
-          return (
-            <Text style={(styles.labelText, styles.text)}>{labelName} </Text>
-          );
-        },
-      })}
-    >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{ title: "Start", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Collection"
-        component={CollectionStack}
-        options={{ title: "Sammlung", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Favorites"
-        component={Favorites}
-        options={{ title: "Favoriten" }}
-      />
-      <Tab.Screen
-        name="New"
-        component={New}
-        options={{ title: "Neu", headerShown: false }}
-      />
-      <Tab.Screen name="Info" component={Info} options={{ title: "Infos" }} />
-    </Tab.Navigator>
-  );
-}
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="BottomTabs"
-          component={TabNavigator}
+            return (
+              <Text style={(styles.labelText, styles.text)}>{labelName} </Text>
+            );
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={Home}
           options={{ headerShown: false }}
         />
-      </Stack.Navigator>
+        <Tab.Screen
+          name="Collection"
+          component={CollectionStack}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen name="Favorites" component={Favorites} />
+        <Tab.Screen
+          name="New"
+          component={New}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen name="Info" component={Info} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
-export default App;
