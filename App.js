@@ -81,6 +81,31 @@ function CollectionStack() {
   );
 }
 
+function FavoritesStack() {
+  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const FavoritesStack = createStackNavigator();
+
+  return (
+    <FavoritesStack.Navigator
+      screenOptions={{
+        headerShown: true,
+        headerStyle: styles.background,
+        headerTitleStyle: styles.text,
+        headerBackImage: () => (
+          <Ionicons name="arrow-back" size={24} style={styles.text} />
+        ),
+      }}
+    >
+      <FavoritesStack.Screen
+        name="Favoriten"
+        component={Favorites}
+        options={{ headerShown: true }}
+      />
+      <FavoritesStack.Screen name="Details" component={Details} />
+    </FavoritesStack.Navigator>
+  );
+}
+
 function TabNavigator() {
   const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   return (
@@ -157,8 +182,8 @@ function TabNavigator() {
       />
       <Tab.Screen
         name="Favorites"
-        component={Favorites}
-        options={{ title: "Favoriten" }}
+        component={FavoritesStack}
+        options={{ title: "Favoriten", headerShown: false }}
       />
       <Tab.Screen
         name="New"
