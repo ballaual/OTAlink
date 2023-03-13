@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
 import {
   Text,
@@ -9,13 +10,33 @@ import {
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 import styles from "../../styles/screens/expertiseStyles";
 
 export default function Allgemeinchirurgie() {
   const [operations, setOperations] = useState([]);
   const [filteredOperations, setFilteredOperations] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const isFocused = useIsFocused();
   const navigation = useNavigation();
+
+  const getFavorites = async () => {
+    try {
+      const favorites = await AsyncStorage.getItem("favorites");
+      return favorites != null ? JSON.parse(favorites) : [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      setSearchText("");
+      getFavorites().then((favorites) => setFavorites(favorites));
+    }
+  }, [isFocused]);
 
   useEffect(() => {
     if (isFocused) {
@@ -55,6 +76,7 @@ export default function Allgemeinchirurgie() {
   });
 
   const handleFilter = (text) => {
+    setSearchText(text);
     const filtered = operations.filter(
       (operation) =>
         operation.titel.toLowerCase().includes(text.toLowerCase()) ||
@@ -75,16 +97,32 @@ export default function Allgemeinchirurgie() {
     navigation.navigate("Details", { operation });
   };
 
+  const handleFavoritePress = async (operation) => {
+    let newFavorites = [...favorites];
+    const index = favorites.findIndex(
+      (favorite) => favorite.id === operation.id
+    );
+    if (index === -1) {
+      newFavorites.push(operation);
+    } else {
+      newFavorites.splice(index, 1);
+    }
+    setFavorites(newFavorites);
+    await AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
+  };
+
   return (
     <View style={[styles.container, themeContainerStyle]}>
-      {filteredOperations.length > 0 && (
+      {operations.length > 0 && (
         <TextInput
           style={[styles.searchContainer, themeTextStyle, themeTextInputStyle]}
           placeholder="Sammlung durchsuchen ..."
           onChangeText={(text) => handleFilter(text)}
+          value={searchText}
+          onFocus={() => setSearchText("")}
         />
       )}
-      {filteredOperations.length === 0 ? (
+      {operations.length === 0 ? (
         <Text style={[styles.noResults, themeTextStyle]}>
           Es sind zur Zeit keine Datensätze für diesen Fachbereich hinterlegt.
           Reichen Sie jetzt einen OP-Ablauf ein oder schauen Sie zu einem
@@ -112,6 +150,22 @@ export default function Allgemeinchirurgie() {
                   <Text style={[styles.operationDescription, themeTextStyle]}>
                     {operation.beschreibung}
                   </Text>
+                  <View style={styles.favoriteIcon}>
+                    <Ionicons
+                      name={
+                        favorites.some((fav) => fav.id === operation.id)
+                          ? "heart"
+                          : "heart-outline"
+                      }
+                      size={24}
+                      color={
+                        favorites.some((fav) => fav.id === operation.id)
+                          ? "red"
+                          : "gray"
+                      }
+                      onPress={() => handleFavoritePress(operation)}
+                    />
+                  </View>
                 </TouchableOpacity>
               ))}
             </View>
