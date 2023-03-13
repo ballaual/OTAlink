@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { useColorScheme, Text } from "react-native";
+import { useColorScheme, Text, TouchableOpacity } from "react-native";
 import { lightStyles, darkStyles } from "./styles/appStyles";
 
 import Home from "./navigation/bottomTabs/Home";
@@ -26,14 +26,20 @@ import Info from "./navigation/bottomTabs/Info";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function CollectionStack() {
+function CollectionStack({ navigation }) {
+  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Sammlung"
-        component={Collection}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: true,
+        headerStyle: styles.background,
+        headerTitleStyle: styles.text,
+        headerBackImage: () => (
+          <Ionicons name="arrow-back" size={24} style={styles.text} />
+        ),
+      }}
+    >
+      <Stack.Screen name="Sammlung" component={Collection} />
       <Stack.Screen name="Allgemeinchirurgie" component={Allgemeinchirurgie} />
       <Stack.Screen name="Kardiochirurgie" component={Kardiochirurgie} />
       <Stack.Screen name="Kinderchirurgie" component={Kinderchirurgie} />
@@ -75,9 +81,6 @@ export default function App() {
             return <Ionicons name={iconName} size={size} style={styles.text} />;
           },
           headerStyle: styles.background,
-          headerShown: true,
-          headerTintColor: styles.text.color,
-          headerTitleAlign: "center",
           headerTitle: ({}) => {
             let headerTitle;
 
@@ -93,16 +96,8 @@ export default function App() {
               headerTitle = "Neu";
             }
 
-            return (
-              <Text style={(styles.labelText, styles.text)}>{headerTitle}</Text>
-            );
+            return <Text style={styles.text}>{headerTitle}</Text>;
           },
-          headerTitleStyle: {
-            fontSize: 50,
-            fontWeight: "bold",
-          },
-          tabBarActiveTintColor: styles.text.color,
-          tabBarInactiveTintColor: styles.text.color,
           tabBarStyle: styles.background,
           tabBarLabel: ({}) => {
             let labelName;
@@ -125,10 +120,22 @@ export default function App() {
           },
         })}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Collection" component={CollectionStack} />
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Collection"
+          component={CollectionStack}
+          options={{ headerShown: false }}
+        />
         <Tab.Screen name="Favorites" component={Favorites} />
-        <Tab.Screen name="New" component={New} />
+        <Tab.Screen
+          name="New"
+          component={New}
+          options={{ headerShown: false }}
+        />
         <Tab.Screen name="Info" component={Info} />
       </Tab.Navigator>
     </NavigationContainer>
