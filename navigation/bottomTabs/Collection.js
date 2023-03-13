@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  StyleSheet,
+  StatusBar,
   Text,
   View,
   useColorScheme,
@@ -55,6 +55,10 @@ export default function Collection() {
         keyExtractor={(item) => item.id}
         renderItem={renderButton}
         contentContainerStyle={styles.buttonsContainer}
+      />
+      <StatusBar
+        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
       />
     </View>
   );

@@ -1,8 +1,16 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, StatusBar, useColorScheme } from "react-native";
 import { WebView } from "react-native-webview";
 
 export default function New() {
+  const colorScheme = useColorScheme();
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeTextInputStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+
   return (
     <View style={styles.container}>
       <WebView
@@ -15,6 +23,10 @@ export default function New() {
         javaScriptEnabled={true}
         domStorageEnabled={true}
         cacheEnabled={false}
+      />
+      <StatusBar
+        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
       />
     </View>
   );

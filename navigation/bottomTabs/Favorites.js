@@ -7,12 +7,21 @@ import {
   TextInput,
   useColorScheme,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "../../styles/screens/expertiseStyles";
 
 export default function Favorites({ navigation }) {
+  const colorScheme = useColorScheme();
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeTextInputStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+
   const [favorites, setFavorites] = useState([]);
   const [filteredFavorites, setFilteredFavorites] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -67,14 +76,6 @@ export default function Favorites({ navigation }) {
     );
     setFilteredFavorites(filtered);
   };
-
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeTextInputStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   const handleFavoritePress = (id) => {
     const newFavorites = favorites.filter((item) => item.id !== id);
@@ -142,6 +143,10 @@ export default function Favorites({ navigation }) {
           />
         </>
       )}
+      <StatusBar
+        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
+      />
     </View>
   );
 }
