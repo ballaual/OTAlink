@@ -1,5 +1,8 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { lightStyles, darkStyles } from "./styles/appStyles";
@@ -37,6 +40,9 @@ function CollectionStack() {
         headerShown: true,
         headerStyle: styles.background,
         headerTitleStyle: styles.text,
+        ...TransitionPresets.SlideFromRightIOS,
+        gestureEnabled: true,
+        detachPreviousScreen: false,
         headerBackImage: () => (
           <Ionicons name="arrow-back" size={24} style={styles.text} />
         ),
