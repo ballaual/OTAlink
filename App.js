@@ -97,6 +97,9 @@ function FavoritesStack() {
         headerShown: true,
         headerStyle: styles.background,
         headerTitleStyle: styles.text,
+        ...TransitionPresets.SlideFromRightIOS,
+        gestureEnabled: true,
+        detachPreviousScreen: false,
         headerBackImage: () => (
           <Ionicons name="arrow-back" size={24} style={styles.text} />
         ),
