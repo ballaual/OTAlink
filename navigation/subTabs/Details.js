@@ -32,7 +32,8 @@ export default function Details({ route }) {
   }
 
   const timestampDate = new Date(operation.zeitstempel);
-  const formattedTimestamp = format(timestampDate, "dd.MM.yyyy - HH:mm");
+  const formattedTimestamp =
+    format(timestampDate, "dd.MM.yyyy - HH:mm") + " Uhr";
 
   return (
     <ScrollView style={[styles.container, themeContainerStyle]}>
@@ -73,6 +74,7 @@ export default function Details({ route }) {
         <Text style={[styles.detailsText, themeTextStyle]}>
           {operation.opablauf}
         </Text>
+        <View style={styles.separator} />
         <Text style={[styles.detailsTitle, themeTextStyle]}>
           Letzte Änderung:
         </Text>
