@@ -40,46 +40,43 @@ export default function Details({ route }) {
         <View style={styles.titleContainer}>
           <Text style={[styles.title, themeTextStyle]}>{operation.titel}</Text>
         </View>
-        <View style={[styles.descriptionContainer, themeContainerStyle]}>
-          <Text style={[styles.detailsTitle, themeTextStyle]}>
-            Beschreibung:
-          </Text>
-          <Text style={[styles.description, themeTextStyle]}>
-            {operation.beschreibung}
-          </Text>
-        </View>
-        <View style={styles.detailsContainer}>
-          <Text style={[styles.detailsTitle, themeTextStyle]}>Indikation:</Text>
-          <Text style={[styles.detailsText, themeTextStyle]}>
-            {operation.indikation}
-          </Text>
-          <View style={styles.separator} />
-          <Text style={[styles.detailsTitle, themeTextStyle]}>
-            Komplikationen:
-          </Text>
-          <Text style={[styles.detailsText, themeTextStyle]}>
-            {operation.komplikationen}
-          </Text>
-          <View style={styles.separator} />
-          <Text style={[styles.detailsTitle, themeTextStyle]}>
-            Instrumente:
-          </Text>
-          <Text style={[styles.detailsText, themeTextStyle]}>
-            {operation.siebeinstrumente}
-          </Text>
-        </View>
+        <Text style={[styles.detailsTitle, themeTextStyle]}>Beschreibung:</Text>
+        <Text style={[styles.detailsText, themeTextStyle]}>
+          {operation.beschreibung}
+        </Text>
+        <View style={styles.separator} />
+        <Text style={[styles.detailsTitle, themeTextStyle]}>Indikation:</Text>
+        <Text style={[styles.detailsText, themeTextStyle]}>
+          {operation.indikation}
+        </Text>
+        <View style={styles.separator} />
+        <Text style={[styles.detailsTitle, themeTextStyle]}>
+          Komplikationen:
+        </Text>
+        <Text style={[styles.detailsText, themeTextStyle]}>
+          {operation.komplikationen}
+        </Text>
+        <View style={styles.separator} />
+        <Text style={[styles.detailsTitle, themeTextStyle]}>Instrumente:</Text>
+        <Text style={[styles.detailsText, themeTextStyle]}>
+          {operation.siebeinstrumente}
+        </Text>
+        <View style={styles.separator} />
+        <Text style={[styles.detailsTitle, themeTextStyle]}>
+          Abdeckung / Lagerung:
+        </Text>
+        <Text style={[styles.detailsText, themeTextStyle]}>
+          {operation.abdeckungenlagerung}
+        </Text>
         <View style={styles.separator} />
         <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
         <Text style={[styles.detailsText, themeTextStyle]}>
           {operation.opablauf}
         </Text>
-      </View>
-      <View style={styles.separator} />
-      <View style={[styles.descriptionContainer, themeContainerStyle]}>
         <Text style={[styles.detailsTitle, themeTextStyle]}>
           Letzte Änderung:
         </Text>
-        <Text style={[styles.description, themeTextStyle]}>
+        <Text style={[styles.detailsText, themeTextStyle]}>
           {formattedTimestamp}
         </Text>
       </View>
