@@ -51,6 +51,8 @@ export default function Home({}) {
           {"\n"}
           {"\n"}
           {"\n"}
+          {"\n"}
+          {"\n"}
           {"\n"}App Version: {Constants.manifest.version}
         </Text>
       </View>
