@@ -67,7 +67,7 @@ export default function Details({ route }) {
           Abdeckung / Lagerung:
         </Text>
         <Text style={[styles.detailsText, themeTextStyle]}>
-          {operation.abdeckungenlagerung}
+          {operation.abdeckunglagerung}
         </Text>
         <View style={styles.separator} />
         <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
