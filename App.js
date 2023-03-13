@@ -115,11 +115,39 @@ function FavoritesStack() {
   );
 }
 
+function InfoStack() {
+  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const InfoStack = createStackNavigator();
+
+  return (
+    <InfoStack.Navigator
+      screenOptions={{
+        headerShown: true,
+        headerStyle: styles.background,
+        headerTitleStyle: styles.text,
+        ...TransitionPresets.SlideFromRightIOS,
+        gestureEnabled: true,
+        detachPreviousScreen: false,
+        headerBackImage: () => (
+          <Ionicons name="arrow-back" size={24} style={styles.text} />
+        ),
+      }}
+    >
+      <InfoStack.Screen
+        name="Informationen"
+        component={Info}
+        options={{ headerShown: true }}
+      />
+    </InfoStack.Navigator>
+  );
+}
+
 function TabNavigator() {
   const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        unmountOnBlur: true,
         tabBarIcon: ({ focused, size }) => {
           let iconName;
 
@@ -199,7 +227,11 @@ function TabNavigator() {
         component={New}
         options={{ title: "Neu", headerShown: false }}
       />
-      <Tab.Screen name="Info" component={Info} options={{ title: "Infos" }} />
+      <Tab.Screen
+        name="Info"
+        component={InfoStack}
+        options={{ title: "Infos", headerShown: false }}
+      />
     </Tab.Navigator>
   );
 }
