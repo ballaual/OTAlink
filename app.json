@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "11"
+      "buildNumber": "10"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +27,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "de.infernalestube.otalink",
-      "versionCode": 11
+      "versionCode": 10
     },
     "web": {
       "favicon": "./assets/favicon.png"
