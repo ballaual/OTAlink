@@ -15,6 +15,7 @@ import styles from "../../styles/screens/expertiseStyles";
 export default function Favorites({ navigation }) {
   const [favorites, setFavorites] = useState([]);
   const [filteredFavorites, setFilteredFavorites] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const isFocused = useIsFocused();
 
   const getFavorites = async () => {
@@ -49,6 +50,7 @@ export default function Favorites({ navigation }) {
 
   useEffect(() => {
     if (isFocused) {
+      setSearchText("");
       getFavorites().then((favorites) => {
         setFavorites(favorites);
         setFilteredFavorites(favorites);
@@ -57,6 +59,7 @@ export default function Favorites({ navigation }) {
   }, [isFocused]);
 
   const handleFilter = (text) => {
+    setSearchText(text);
     const filtered = favorites.filter(
       (favorite) =>
         favorite.titel.toLowerCase().includes(text.toLowerCase()) ||
@@ -100,6 +103,8 @@ export default function Favorites({ navigation }) {
             ]}
             placeholder="Favoriten durchsuchen ..."
             onChangeText={(text) => handleFilter(text)}
+            value={searchText}
+            onFocus={() => setSearchText("")}
           />
           <FlatList
             data={sections}
