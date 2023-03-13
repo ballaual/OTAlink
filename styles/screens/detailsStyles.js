@@ -54,6 +54,13 @@ const styles = StyleSheet.create({
   separator: {
     height: 16,
   },
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  favoriteContainer: {
+    marginLeft: 10,
+  },
 });
 
 export default styles;

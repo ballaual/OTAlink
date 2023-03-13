@@ -1,5 +1,14 @@
-import React from "react";
-import { Text, View, useColorScheme, ScrollView } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useState, useEffect } from "react";
+import {
+  Text,
+  View,
+  useColorScheme,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useIsFocused } from "@react-navigation/native";
 import { format } from "date-fns";
 import styles from "../../styles/screens/detailsStyles";
 
@@ -11,6 +20,8 @@ export default function Details({ route }) {
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   const operation = route.params?.operation;
+  const [favorites, setFavorites] = useState([]);
+  const isFocused = useIsFocused();
 
   if (!operation) {
     return (
@@ -37,11 +48,62 @@ export default function Details({ route }) {
   const formattedTimestamp =
     format(timestampDate, "dd.MM.yyyy - HH:mm") + " Uhr";
 
+  const getFavorites = async () => {
+    try {
+      const favorites = await AsyncStorage.getItem("favorites");
+      return favorites != null ? JSON.parse(favorites) : [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      getFavorites().then((favorites) => setFavorites(favorites));
+    }
+  }, [isFocused]);
+
+  const handleFavoritePress = async (operation) => {
+    let newFavorites = [...favorites];
+    const index = favorites.findIndex(
+      (favorite) => favorite.id === operation.id
+    );
+    if (index === -1) {
+      newFavorites.push(operation);
+    } else {
+      newFavorites.splice(index, 1);
+    }
+    setFavorites(newFavorites);
+    await AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
+  };
+
   return (
     <ScrollView style={[styles.container, themeContainerStyle]}>
       <View style={styles.content}>
         <View style={styles.titleContainer}>
           <Text style={[styles.title, themeTextStyle]}>{operation.titel}</Text>
+          <TouchableOpacity
+            key={operation.id}
+            style={styles.favoriteContainer}
+            onPress={() => handleOperationPress(operation)}
+          ></TouchableOpacity>
+          <View style={styles.favoriteIcon}>
+            <Ionicons
+              name={
+                favorites.some((fav) => fav.id === operation.id)
+                  ? "heart"
+                  : "heart-outline"
+              }
+              size={24}
+              color={
+                favorites.some((fav) => fav.id === operation.id)
+                  ? "red"
+                  : "gray"
+              }
+              onPress={() => handleFavoritePress(operation)}
+            />
+          </View>
         </View>
         <Text style={[styles.detailsTitle, themeTextStyle]}>Beschreibung:</Text>
         <Text style={[styles.detailsText, themeTextStyle]}>
