@@ -32,6 +32,8 @@ export default function Details({ route }) {
   }
 
   const timestampDate = new Date(operation.zeitstempel);
+  timestampDate.setHours(timestampDate.getHours() + 1);
+
   const formattedTimestamp =
     format(timestampDate, "dd.MM.yyyy - HH:mm") + " Uhr";
 
