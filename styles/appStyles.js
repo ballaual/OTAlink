@@ -7,6 +7,9 @@ export const lightStyles = StyleSheet.create({
   text: {
     color: "#000000",
   },
+  textinput: {
+    color: "#000000",
+  },
 });
 
 export const darkStyles = StyleSheet.create({
@@ -15,5 +18,8 @@ export const darkStyles = StyleSheet.create({
   },
   text: {
     color: "#FFFFFF",
+  },
+  textinput: {
+    color: "#000000",
   },
 });
