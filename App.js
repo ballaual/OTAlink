@@ -123,32 +123,32 @@ function TabNavigator() {
   );
 }
 
-const App = () => {
-  const [colorScheme, setColorScheme] = useState("light");
-
-  useEffect(() => {
-    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
-      setColorScheme(colorScheme);
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
-  return (
-    <>
-      <StatusBar
-        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
-        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
-      />
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="BottomTabs" component={TabNavigator} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-    </>
-  );
-}
+  const App = () => {
+    const [colorScheme, setColorScheme] = useState(Appearance.getColorScheme());
+  
+    useEffect(() => {
+      const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+        setColorScheme(colorScheme);
+      });
+  
+      return () => {
+        subscription.remove();
+      };
+    }, []);
+  
+    return (
+      <>
+        <StatusBar
+          backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
+          barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
+        />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="BottomTabs" component={TabNavigator} options={{ headerShown: false }} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </>
+    );
+  }
 
 export default App;
