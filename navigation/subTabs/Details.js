@@ -121,18 +121,29 @@ export default function Details({ route }) {
         <Text style={[styles.detailsText, themeTextStyle]}>
           {operation.komplikationen}
         </Text>
-        <View style={styles.separator} />
-        <Text style={[styles.detailsTitle, themeTextStyle]}>Instrumente:</Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
-          {operation.siebeinstrumente}
-        </Text>
-        <View style={styles.separator} />
-        <Text style={[styles.detailsTitle, themeTextStyle]}>
-          Abdeckung / Lagerung:
-        </Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
-          {operation.abdeckunglagerung}
-        </Text>
+        {operation.siebeinstrumente && (
+          <>
+            <View style={styles.separator} />
+            <Text style={[styles.detailsTitle, themeTextStyle]}>
+              Instrumente:
+            </Text>
+            <Text style={[styles.detailsText, themeTextStyle]}>
+              {operation.siebeinstrumente}
+            </Text>
+          </>
+        )}
+
+        {operation.abdeckunglagerung && (
+          <>
+            <View style={styles.separator} />
+            <Text style={[styles.detailsTitle, themeTextStyle]}>
+              Abdeckung / Lagerung:
+            </Text>
+            <Text style={[styles.detailsText, themeTextStyle]}>
+              {operation.abdeckunglagerung}
+            </Text>
+          </>
+        )}
         <View style={styles.separator} />
         <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
         <Text style={[styles.detailsText, themeTextStyle]}>
