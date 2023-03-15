@@ -16,18 +16,6 @@ const styles = StyleSheet.create({
     marginRight: 15,
     fontSize: 20,
   },
-  lightContainer: {
-    backgroundColor: "#FFFFFF",
-  },
-  darkContainer: {
-    backgroundColor: "#1D2935",
-  },
-  lightThemeText: {
-    color: "#000000",
-  },
-  darkThemeText: {
-    color: "#FFFFFF",
-  },
   descriptionLink: {
     color: "#007AFF",
     textDecorationLine: "underline",

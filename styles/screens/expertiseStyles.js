@@ -47,21 +47,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 8,
   },
-  lightContainer: {
-    backgroundColor: "#FFFFFF",
-  },
-  darkContainer: {
-    backgroundColor: "#1D2935",
-  },
-  lightThemeText: {
-    color: "#000000",
-  },
-  darkThemeText: {
-    color: "#FFFFFF",
-  },
-  darkThemeTextInput: {
-    color: "#000000",
-  },
   sectionDivider: {
     height: 1,
     backgroundColor: "#CCCCCC",

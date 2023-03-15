@@ -36,18 +36,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
   },
-  lightContainer: {
-    backgroundColor: "#FFFFFF",
-  },
-  darkContainer: {
-    backgroundColor: "#1D2935",
-  },
-  lightThemeText: {
-    color: "#000000",
-  },
-  darkThemeText: {
-    color: "#FFFFFF",
-  },
   detailsContainer: {
     marginTop: 16,
   },
