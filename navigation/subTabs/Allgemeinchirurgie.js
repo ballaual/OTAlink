@@ -5,6 +5,8 @@ import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
+const Secrets = require('../../Secrets');
+
 import styles from "../../styles/screens/expertiseStyles";
 import { lightStyles, darkStyles } from "../../styles/appStyles";
 
@@ -37,7 +39,7 @@ export default function Allgemeinchirurgie() {
 
   useEffect(() => {
     if (isFocused) {
-      fetch("https://infernalestube.de/otalink/operation.json", {
+      fetch(Secrets.OPERATIONS_URL, {
         headers: {
           "Cache-Control": "no-cache",
         },
