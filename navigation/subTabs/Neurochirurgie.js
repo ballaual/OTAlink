@@ -5,8 +5,6 @@ import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
-const Secrets = require('../../Secrets');
-
 import styles from "../../styles/screens/expertiseStyles";
 import { lightStyles, darkStyles } from "../../styles/appStyles";
 
@@ -40,7 +38,7 @@ export default function Neurochirurgie() {
 
   useEffect(() => {
     if (isFocused) {
-      fetch(Secrets.OPERATIONS_URL, {
+      fetch("https://infernalestube.de/otalink/operation.json", {
         headers: {
           "Cache-Control": "no-cache",
         },
