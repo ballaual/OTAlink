@@ -29,9 +29,9 @@ export default function Collection() {
     { id: "5", title: "Kinderchirurgie", screen: "Kinderchirurgie" },
     { id: "6", title: "Neurochirurgie", screen: "Neurochirurgie" },
     { id: "7", title: "Orthopädie", screen: "Orthopädie" },
-    { id: "8", title: "Sonstiges", screen: "Sonstiges" },
-    { id: "9", title: "Unfallchirurgie", screen: "Unfallchirurgie" },
-    { id: "10", title: "Urologie", screen: "Urologie" },
+    { id: "8", title: "Unfallchirurgie", screen: "Unfallchirurgie" },
+    { id: "9", title: "Urologie", screen: "Urologie" },
+    { id: "10", title: "Sonstiges", screen: "Sonstiges" },
   ];
 
   const renderButton = ({ item }) => (
