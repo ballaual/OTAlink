@@ -1,19 +1,16 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  FlatList,
-  TextInput,
-  useColorScheme,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, FlatList, TextInput, useColorScheme, TouchableOpacity } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+
 import styles from "../../styles/screens/expertiseStyles";
+import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Allgemeinchirurgie() {
+  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
+
   const [operations, setOperations] = useState([]);
   const [filteredOperations, setFilteredOperations] = useState([]);
   const [favorites, setFavorites] = useState([]);
@@ -85,14 +82,6 @@ export default function Allgemeinchirurgie() {
     setFilteredOperations(filtered);
   };
 
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeTextInputStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
-
   const handleOperationPress = (operation) => {
     navigation.navigate("Details", { operation });
   };
@@ -112,10 +101,10 @@ export default function Allgemeinchirurgie() {
   };
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
+    <View style={[styles.container, appStyles.background]}>
       {operations.length > 0 && (
         <TextInput
-          style={[styles.searchContainer, themeTextStyle, themeTextInputStyle]}
+          style={[styles.searchContainer, appStyles.text, appStyles.textinput]}
           placeholder="Sammlung durchsuchen ..."
           onChangeText={(text) => handleFilter(text)}
           value={searchText}
@@ -123,7 +112,7 @@ export default function Allgemeinchirurgie() {
         />
       )}
       {operations.length === 0 ? (
-        <Text style={[styles.noResults, themeTextStyle]}>
+        <Text style={[styles.noResults, appStyles.text]}>
           Es sind zur Zeit keine Datensätze für diesen Fachbereich hinterlegt.
           Reichen Sie jetzt einen OP-Ablauf ein oder schauen Sie zu einem
           späteren Zeitpunkt wieder vorbei.
@@ -135,7 +124,7 @@ export default function Allgemeinchirurgie() {
           renderItem={({ item, index }) => (
             <View>
               {index > 0 && <View style={styles.sectionDivider}></View>}
-              <Text style={[styles.sectionHeader, themeTextStyle]}>
+              <Text style={[styles.sectionHeader, appStyles.text]}>
                 {item.titel}
               </Text>
               {item.data.map((operation) => (
@@ -144,10 +133,10 @@ export default function Allgemeinchirurgie() {
                   style={styles.operationContainer}
                   onPress={() => handleOperationPress(operation)}
                 >
-                  <Text style={[styles.operationTitle, themeTextStyle]}>
+                  <Text style={[styles.operationTitle, appStyles.text]}>
                     {operation.titel}
                   </Text>
-                  <Text style={[styles.operationDescription, themeTextStyle]}>
+                  <Text style={[styles.operationDescription, appStyles.text]}>
                     {operation.beschreibung}
                   </Text>
                   <View style={styles.favoriteIcon}>

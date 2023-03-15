@@ -1,15 +1,13 @@
 import React from "react";
 import { Text, View, useColorScheme, FlatList, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
 import styles from "../../styles/screens/collectionStyles";
+import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Collection() {
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
-
+  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  
   const navigation = useNavigation();
 
   const buttons = [
@@ -27,16 +25,16 @@ export default function Collection() {
 
   const renderButton = ({ item }) => (
     <TouchableOpacity
-      style={[styles.buttonContainer, themeContainerStyle]}
+      style={[styles.buttonContainer, appStyles.background]}
       onPress={() => navigation.navigate(item.screen)}
     >
-      <Text style={[styles.buttonTitle, themeTextStyle]}>{item.title}</Text>
+      <Text style={[styles.buttonTitle, appStyles.text]}>{item.title}</Text>
     </TouchableOpacity>
   );
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
-      <Text style={[styles.headerText, themeTextStyle]}>
+    <View style={[styles.container, appStyles.background]}>
+      <Text style={[styles.headerText, appStyles.text]}>
         Bitte wählen Sie einen Fachbereich aus, um für diesen OP-Abläufe
         angezeigt zu bekommen.
       </Text>

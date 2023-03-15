@@ -4,8 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { useColorScheme, Text, StatusBar, Appearance } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { lightStyles, darkStyles } from "./styles/appStyles";
 import { screenOptions } from "./navigation/screenOptions";
+
+import { lightStyles, darkStyles } from "./styles/appStyles";
 
 import Home from "./navigation/bottomTabs/Home";
 import Collection from "./navigation/bottomTabs/Collection";
@@ -71,11 +72,11 @@ function InfoStack() {
 }
 
 function TabNavigator() {
-  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarStyle: styles.background,
+        tabBarStyle: appStyles.background,
         tabBarIcon: ({ focused, size }) => {
           let iconName;
 
@@ -91,7 +92,7 @@ function TabNavigator() {
             iconName = focused ? "add-circle" : "add-circle-outline";
           }
 
-          return <Ionicons name={iconName} size={size} style={styles.text} />;
+          return <Ionicons name={iconName} size={size} style={appStyles.text} />;
         },
         tabBarLabel: ({}) => {
           let labelName;
@@ -109,7 +110,7 @@ function TabNavigator() {
           }
 
           return (
-            <Text style={(styles.labelText, styles.text)}>{labelName} </Text>
+            <Text style={(appStyles.labelText, appStyles.text)}>{labelName} </Text>
           );
         },
       })}

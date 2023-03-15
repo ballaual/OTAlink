@@ -1,16 +1,13 @@
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Info() {
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
+    <View style={[styles.container, appStyles.background]}>
       <View>
-        <Text style={[styles.comingSoon, themeTextStyle]}>coming soon</Text>
+        <Text style={[styles.comingSoon, appStyles.text]}>coming soon</Text>
       </View>
     </View>
   );

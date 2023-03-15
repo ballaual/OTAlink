@@ -3,16 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Text, View, FlatList, TextInput, useColorScheme, TouchableOpacity } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+
 import styles from "../../styles/screens/expertiseStyles";
+import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Favorites({ navigation }) {
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeTextInputStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
 
   const [favorites, setFavorites] = useState([]);
   const [filteredFavorites, setFilteredFavorites] = useState([]);
@@ -81,9 +77,9 @@ export default function Favorites({ navigation }) {
   };
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
+    <View style={[styles.container, appStyles.background]}>
       {favorites.length === 0 ? (
-        <Text style={[styles.noResults, themeTextStyle]}>
+        <Text style={[styles.noResults, appStyles.text]}>
           Sie haben noch keine Favoriten hinzugefügt.
         </Text>
       ) : (
@@ -91,8 +87,7 @@ export default function Favorites({ navigation }) {
           <TextInput
             style={[
               styles.searchContainer,
-              themeTextStyle,
-              themeTextInputStyle,
+              appStyles.textinput,
             ]}
             placeholder="Favoriten durchsuchen ..."
             onChangeText={(text) => handleFilter(text)}
@@ -105,7 +100,7 @@ export default function Favorites({ navigation }) {
             renderItem={({ item, index }) => (
               <View>
                 {index > 0 && <View style={styles.sectionDivider}></View>}
-                <Text style={[styles.sectionHeader, themeTextStyle]}>
+                <Text style={[styles.sectionHeader, appStyles.text]}>
                   {item.titel}
                 </Text>
                 {item.data.map((operation) => (
@@ -114,10 +109,10 @@ export default function Favorites({ navigation }) {
                     style={styles.operationContainer}
                     onPress={() => handleOperationPress(operation)}
                   >
-                    <Text style={[styles.operationTitle, themeTextStyle]}>
+                    <Text style={[styles.operationTitle, appStyles.text]}>
                       {operation.titel}
                     </Text>
-                    <Text style={[styles.operationDescription, themeTextStyle]}>
+                    <Text style={[styles.operationDescription, appStyles.text]}>
                       {operation.beschreibung}
                     </Text>
                     <View style={styles.favoriteIcon}>
