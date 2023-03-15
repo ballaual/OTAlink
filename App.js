@@ -75,7 +75,7 @@ function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        unmountOnBlur: true,
+        tabBarStyle: styles.background,
         tabBarIcon: ({ focused, size }) => {
           let iconName;
 
@@ -93,7 +93,6 @@ function TabNavigator() {
 
           return <Ionicons name={iconName} size={size} style={styles.text} />;
         },
-        tabBarStyle: styles.background,
         tabBarLabel: ({}) => {
           let labelName;
 
