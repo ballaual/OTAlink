@@ -1,23 +1,15 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  useColorScheme,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, useColorScheme, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useIsFocused } from "@react-navigation/native";
 import { format } from "date-fns";
+
 import styles from "../../styles/screens/detailsStyles";
+import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Details({ route }) {
-  const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
 
   const operation = route.params?.operation;
   const [favorites, setFavorites] = useState([]);
@@ -28,12 +20,12 @@ export default function Details({ route }) {
       <View
         style={[
           styles.container,
-          themeContainerStyle,
+          appStyles.background,
           { justifyContent: "center", alignItems: "center" },
         ]}
       >
         <View>
-          <Text style={[styles.loadingText, themeTextStyle]}>
+          <Text style={[styles.loadingText, appStyles.text]}>
             Bitte über die Sammlung einen Datensatz aufrufen um weitere
             Informationen angezeigt zu bekommen.
           </Text>
@@ -79,10 +71,10 @@ export default function Details({ route }) {
   };
 
   return (
-    <ScrollView style={[styles.container, themeContainerStyle]}>
+    <ScrollView style={[styles.container, appStyles.background]}>
       <View style={styles.content}>
         <View style={styles.titleContainer}>
-          <Text style={[styles.title, themeTextStyle]}>{operation.titel}</Text>
+          <Text style={[styles.title, appStyles.text]}>{operation.titel}</Text>
           <TouchableOpacity
             key={operation.id}
             style={styles.favoriteContainer}
@@ -105,29 +97,29 @@ export default function Details({ route }) {
             />
           </View>
         </View>
-        <Text style={[styles.detailsTitle, themeTextStyle]}>Beschreibung:</Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
+        <Text style={[styles.detailsTitle, appStyles.text]}>Beschreibung:</Text>
+        <Text style={[styles.detailsText, appStyles.text]}>
           {operation.beschreibung}
         </Text>
         <View style={styles.separator} />
-        <Text style={[styles.detailsTitle, themeTextStyle]}>Indikation:</Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
+        <Text style={[styles.detailsTitle, appStyles.text]}>Indikation:</Text>
+        <Text style={[styles.detailsText, appStyles.text]}>
           {operation.indikation}
         </Text>
         <View style={styles.separator} />
-        <Text style={[styles.detailsTitle, themeTextStyle]}>
+        <Text style={[styles.detailsTitle, appStyles.text]}>
           Komplikationen:
         </Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
+        <Text style={[styles.detailsText, appStyles.text]}>
           {operation.komplikationen}
         </Text>
         {operation.siebeinstrumente && (
           <>
             <View style={styles.separator} />
-            <Text style={[styles.detailsTitle, themeTextStyle]}>
+            <Text style={[styles.detailsTitle, appStyles.text]}>
               Instrumente:
             </Text>
-            <Text style={[styles.detailsText, themeTextStyle]}>
+            <Text style={[styles.detailsText, appStyles.text]}>
               {operation.siebeinstrumente}
             </Text>
           </>
@@ -136,24 +128,24 @@ export default function Details({ route }) {
         {operation.abdeckunglagerung && (
           <>
             <View style={styles.separator} />
-            <Text style={[styles.detailsTitle, themeTextStyle]}>
+            <Text style={[styles.detailsTitle, appStyles.text]}>
               Abdeckung / Lagerung:
             </Text>
-            <Text style={[styles.detailsText, themeTextStyle]}>
+            <Text style={[styles.detailsText, appStyles.text]}>
               {operation.abdeckunglagerung}
             </Text>
           </>
         )}
         <View style={styles.separator} />
-        <Text style={[styles.detailsTitle, themeTextStyle]}>Ablauf:</Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
+        <Text style={[styles.detailsTitle, appStyles.text]}>Ablauf:</Text>
+        <Text style={[styles.detailsText, appStyles.text]}>
           {operation.opablauf}
         </Text>
         <View style={styles.separator} />
-        <Text style={[styles.detailsTitle, themeTextStyle]}>
+        <Text style={[styles.detailsTitle, appStyles.text]}>
           Letzte Änderung:
         </Text>
-        <Text style={[styles.detailsText, themeTextStyle]}>
+        <Text style={[styles.detailsText, appStyles.text]}>
           {formattedTimestamp}
         </Text>
       </View>
