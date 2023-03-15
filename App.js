@@ -1,10 +1,11 @@
 import React from "react";
-import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { lightStyles, darkStyles } from "./styles/appStyles";
 import { useColorScheme, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { lightStyles, darkStyles } from "./styles/appStyles";
+import { screenOptions } from "./navigation/screenOptions";
 
 import Home from "./navigation/bottomTabs/Home";
 import Collection from "./navigation/bottomTabs/Collection";
@@ -28,23 +29,10 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function CollectionStack() {
-  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   const CollectionStack = createStackNavigator();
 
   return (
-    <CollectionStack.Navigator
-      screenOptions={{
-        headerShown: true,
-        headerStyle: styles.background,
-        headerTitleStyle: styles.text,
-        ...TransitionPresets.SlideFromRightIOS,
-        gestureEnabled: true,
-        detachPreviousScreen: false,
-        headerBackImage: () => (
-          <Ionicons name="arrow-back" size={24} style={styles.text} />
-        ),
-      }}
-    >
+    <CollectionStack.Navigator screenOptions={screenOptions()}>
       <CollectionStack.Screen name="Sammlung" component={Collection} />
       <CollectionStack.Screen name="Allgemeinchirurgie" component={Allgemeinchirurgie} />
       <CollectionStack.Screen name="Gefäßchirurgie" component={Gefäßchirurgie} />
@@ -62,48 +50,22 @@ function CollectionStack() {
 }
 
 function FavoritesStack() {
-  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   const FavoritesStack = createStackNavigator();
 
   return (
-    <FavoritesStack.Navigator
-      screenOptions={{
-        headerShown: true,
-        headerStyle: styles.background,
-        headerTitleStyle: styles.text,
-        ...TransitionPresets.SlideFromRightIOS,
-        gestureEnabled: true,
-        detachPreviousScreen: false,
-        headerBackImage: () => (
-          <Ionicons name="arrow-back" size={24} style={styles.text} />
-        ),
-      }}
-    >
-      <FavoritesStack.Screen name="Favoriten" component={Favorites} options={{ headerShown: true }} />
+    <FavoritesStack.Navigator screenOptions={screenOptions()}>
+      <FavoritesStack.Screen name="Favoriten" component={Favorites} />
       <FavoritesStack.Screen name="Details" component={Details} />
     </FavoritesStack.Navigator>
   );
 }
 
 function InfoStack() {
-  const styles = useColorScheme() === "light" ? lightStyles : darkStyles;
   const InfoStack = createStackNavigator();
 
   return (
-    <InfoStack.Navigator
-      screenOptions={{
-        headerShown: true,
-        headerStyle: styles.background,
-        headerTitleStyle: styles.text,
-        ...TransitionPresets.SlideFromRightIOS,
-        gestureEnabled: true,
-        detachPreviousScreen: false,
-        headerBackImage: () => (
-          <Ionicons name="arrow-back" size={24} style={styles.text} />
-        ),
-      }}
-    >
-      <InfoStack.Screen name="Informationen" component={Info} options={{ headerShown: true }} />
+    <InfoStack.Navigator screenOptions={screenOptions()}>
+      <InfoStack.Screen name="Informationen" component={Info} />
     </InfoStack.Navigator>
   );
 }
@@ -133,24 +95,6 @@ function TabNavigator() {
 
           return <Ionicons name={iconName} size={size} style={styles.text} />;
         },
-        headerStyle: styles.background,
-        headerTitle: ({}) => {
-          let headerTitle;
-
-          if (route.name === "Home") {
-            headerTitle = "Start";
-          } else if (route.name === "Collection") {
-            headerTitle = "Sammlung";
-          } else if (route.name === "Favorites") {
-            headerTitle = "Favoriten";
-          } else if (route.name === "Info") {
-            headerTitle = "Informationen";
-          } else if (route.name === "New") {
-            headerTitle = "Neu";
-          }
-
-          return <Text style={styles.text}>{headerTitle}</Text>;
-        },
         tabBarStyle: styles.background,
         tabBarLabel: ({}) => {
           let labelName;
@@ -173,11 +117,11 @@ function TabNavigator() {
         },
       })}
     >
-      <Tab.Screen name="Home" component={Home} options={{ title: "Start", headerShown: false }} />
-      <Tab.Screen name="Collection"component={CollectionStack} options={{ title: "Sammlung", headerShown: false }} />
-      <Tab.Screen name="Favorites" component={FavoritesStack} options={{ title: "Favoriten", headerShown: false }} />
-      <Tab.Screen name="New" component={New} options={{ title: "Neu", headerShown: false }} />
-      <Tab.Screen name="Info" component={InfoStack} options={{ title: "Infos", headerShown: false }} />
+      <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
+      <Tab.Screen name="Collection"component={CollectionStack} options={{ headerShown: false }} />
+      <Tab.Screen name="Favorites" component={FavoritesStack} options={{  headerShown: false }} />
+      <Tab.Screen name="New" component={New} options={{ headerShown: false }} />
+      <Tab.Screen name="Info" component={InfoStack} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 }
