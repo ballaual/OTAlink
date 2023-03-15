@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from "@react-navigation/stack";
+import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { lightStyles, darkStyles } from "./styles/appStyles";
@@ -48,40 +45,17 @@ function CollectionStack() {
         ),
       }}
     >
-      <CollectionStack.Screen
-        name="Sammlung"
-        component={Collection}
-        options={{ headerShown: true }}
-      />
-      <CollectionStack.Screen
-        name="Allgemeinchirurgie"
-        component={Allgemeinchirurgie}
-      />
-      <CollectionStack.Screen
-        name="Gefäßchirurgie"
-        component={Gefäßchirurgie}
-      />
+      <CollectionStack.Screen name="Sammlung" component={Collection} />
+      <CollectionStack.Screen name="Allgemeinchirurgie" component={Allgemeinchirurgie} />
+      <CollectionStack.Screen name="Gefäßchirurgie" component={Gefäßchirurgie} />
       <CollectionStack.Screen name="Gynäkologie" component={Gynäkologie} />
-      <CollectionStack.Screen
-        name="Kardiochirurgie"
-        component={Kardiochirurgie}
-      />
-      <CollectionStack.Screen
-        name="Kinderchirurgie"
-        component={Kinderchirurgie}
-      />
-      <CollectionStack.Screen
-        name="Neurochirurgie"
-        component={Neurochirurgie}
-      />
+      <CollectionStack.Screen name="Kardiochirurgie" component={Kardiochirurgie} />
+      <CollectionStack.Screen name="Kinderchirurgie" component={Kinderchirurgie} />
+      <CollectionStack.Screen name="Neurochirurgie" component={Neurochirurgie} />
       <CollectionStack.Screen name="Orthopädie" component={Orthopädie} />
       <CollectionStack.Screen name="Sonstiges" component={Sonstiges} />
-      <CollectionStack.Screen
-        name="Unfallchirurgie"
-        component={Unfallchirurgie}
-      />
+      <CollectionStack.Screen name="Unfallchirurgie" component={Unfallchirurgie} />
       <CollectionStack.Screen name="Urologie" component={Urologie} />
-
       <CollectionStack.Screen name="Details" component={Details} />
     </CollectionStack.Navigator>
   );
@@ -105,11 +79,7 @@ function FavoritesStack() {
         ),
       }}
     >
-      <FavoritesStack.Screen
-        name="Favoriten"
-        component={Favorites}
-        options={{ headerShown: true }}
-      />
+      <FavoritesStack.Screen name="Favoriten" component={Favorites} options={{ headerShown: true }} />
       <FavoritesStack.Screen name="Details" component={Details} />
     </FavoritesStack.Navigator>
   );
@@ -133,11 +103,7 @@ function InfoStack() {
         ),
       }}
     >
-      <InfoStack.Screen
-        name="Informationen"
-        component={Info}
-        options={{ headerShown: true }}
-      />
+      <InfoStack.Screen name="Informationen" component={Info} options={{ headerShown: true }} />
     </InfoStack.Navigator>
   );
 }
@@ -207,31 +173,11 @@ function TabNavigator() {
         },
       })}
     >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{ title: "Start", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Collection"
-        component={CollectionStack}
-        options={{ title: "Sammlung", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Favorites"
-        component={FavoritesStack}
-        options={{ title: "Favoriten", headerShown: false }}
-      />
-      <Tab.Screen
-        name="New"
-        component={New}
-        options={{ title: "Neu", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Info"
-        component={InfoStack}
-        options={{ title: "Infos", headerShown: false }}
-      />
+      <Tab.Screen name="Home" component={Home} options={{ title: "Start", headerShown: false }} />
+      <Tab.Screen name="Collection"component={CollectionStack} options={{ title: "Sammlung", headerShown: false }} />
+      <Tab.Screen name="Favorites" component={FavoritesStack} options={{ title: "Favoriten", headerShown: false }} />
+      <Tab.Screen name="New" component={New} options={{ title: "Neu", headerShown: false }} />
+      <Tab.Screen name="Info" component={InfoStack} options={{ title: "Infos", headerShown: false }} />
     </Tab.Navigator>
   );
 }
@@ -240,11 +186,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="BottomTabs"
-          component={TabNavigator}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="BottomTabs" component={TabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
