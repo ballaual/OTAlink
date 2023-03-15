@@ -2,7 +2,7 @@
   "expo": {
     "name": "OTAlink",
     "slug": "otalink",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "10"
+      "buildNumber": "11"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +27,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "de.infernalestube.otalink",
-      "versionCode": 10
+      "versionCode": 11
     },
     "web": {
       "favicon": "./assets/favicon.png"
