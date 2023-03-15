@@ -4,12 +4,6 @@ import { WebView } from "react-native-webview";
 
 export default function New() {
   const colorScheme = useColorScheme();
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeTextInputStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeTextInput;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   return (
     <View style={styles.container}>
