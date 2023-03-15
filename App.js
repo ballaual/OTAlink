@@ -20,9 +20,9 @@ import Kardiochirurgie from "./navigation/subTabs/Kardiochirurgie";
 import Kinderchirurgie from "./navigation/subTabs/Kinderchirurgie";
 import Neurochirurgie from "./navigation/subTabs/Neurochirurgie";
 import Orthopädie from "./navigation/subTabs/Orthopädie";
-import Sonstiges from "./navigation/subTabs/Sonstiges";
 import Unfallchirurgie from "./navigation/subTabs/Unfallchirurgie";
 import Urologie from "./navigation/subTabs/Urologie";
+import Sonstiges from "./navigation/subTabs/Sonstiges";
 import Details from "./navigation/subTabs/Details";
 
 const Stack = createStackNavigator();
@@ -41,9 +41,9 @@ function CollectionStack() {
       <CollectionStack.Screen name="Kinderchirurgie" component={Kinderchirurgie} />
       <CollectionStack.Screen name="Neurochirurgie" component={Neurochirurgie} />
       <CollectionStack.Screen name="Orthopädie" component={Orthopädie} />
-      <CollectionStack.Screen name="Sonstiges" component={Sonstiges} />
       <CollectionStack.Screen name="Unfallchirurgie" component={Unfallchirurgie} />
       <CollectionStack.Screen name="Urologie" component={Urologie} />
+      <CollectionStack.Screen name="Sonstiges" component={Sonstiges} />
       <CollectionStack.Screen name="Details" component={Details} />
     </CollectionStack.Navigator>
   );
