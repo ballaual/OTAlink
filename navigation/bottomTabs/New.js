@@ -1,9 +1,8 @@
 import React from "react";
-import { StyleSheet, View, useColorScheme } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
 
 export default function New() {
-  const colorScheme = useColorScheme();
 
   return (
     <View style={styles.container}>
