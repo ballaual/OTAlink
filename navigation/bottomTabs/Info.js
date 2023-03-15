@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 
 export default function Info() {
   const colorScheme = useColorScheme();
@@ -18,10 +12,6 @@ export default function Info() {
       <View>
         <Text style={[styles.comingSoon, themeTextStyle]}>coming soon</Text>
       </View>
-      <StatusBar
-        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
-        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
-      />
     </View>
   );
 }

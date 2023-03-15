@@ -1,14 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  FlatList,
-  TextInput,
-  useColorScheme,
-  TouchableOpacity,
-  StatusBar,
-} from "react-native";
+import { Text, View, FlatList, TextInput, useColorScheme, TouchableOpacity } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "../../styles/screens/expertiseStyles";
@@ -143,10 +135,6 @@ export default function Favorites({ navigation }) {
           />
         </>
       )}
-      <StatusBar
-        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
-        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
-      />
     </View>
   );
 }

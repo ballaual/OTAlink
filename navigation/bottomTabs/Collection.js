@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StatusBar,
-  Text,
-  View,
-  useColorScheme,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, useColorScheme, FlatList, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "../../styles/screens/collectionStyles";
 
@@ -53,10 +46,6 @@ export default function Collection() {
         keyExtractor={(item) => item.id}
         renderItem={renderButton}
         contentContainerStyle={styles.buttonsContainer}
-      />
-      <StatusBar
-        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
-        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
       />
     </View>
   );

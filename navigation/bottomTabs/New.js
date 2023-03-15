@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, StatusBar, useColorScheme } from "react-native";
+import { StyleSheet, View, useColorScheme } from "react-native";
 import { WebView } from "react-native-webview";
 
 export default function New() {
@@ -17,10 +17,6 @@ export default function New() {
         javaScriptEnabled={true}
         domStorageEnabled={true}
         cacheEnabled={false}
-      />
-      <StatusBar
-        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
-        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
       />
     </View>
   );

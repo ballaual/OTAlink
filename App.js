@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { useColorScheme, Text } from "react-native";
+import { useColorScheme, Text, StatusBar, Appearance } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { lightStyles, darkStyles } from "./styles/appStyles";
 import { screenOptions } from "./navigation/screenOptions";
@@ -123,13 +123,31 @@ function TabNavigator() {
   );
 }
 
-function App() {
+const App = () => {
+  const [colorScheme, setColorScheme] = useState("light");
+
+  useEffect(() => {
+    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+      setColorScheme(colorScheme);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
   return (
+    <>
+      <StatusBar
+        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
+      />
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="BottomTabs" component={TabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Constants from "expo-constants";
-import { StatusBar, Linking, Platform, Text, View, Image, useColorScheme } from "react-native";
+import { Linking, Platform, Text, View, Image, useColorScheme } from "react-native";
 
 import styles from "../../styles/screens/homeStyles";
 
@@ -61,10 +61,6 @@ export default function Home({}) {
           </Text>
         </Text>
       </View>
-      <StatusBar
-        backgroundColor={colorScheme === "dark" ? "#1D2935" : "#FFFFFF"}
-        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
-      />
     </View>
   );
 }
