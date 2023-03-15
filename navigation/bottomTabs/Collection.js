@@ -6,7 +6,8 @@ import styles from "../../styles/screens/collectionStyles";
 import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Collection() {
-  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const colorScheme = useColorScheme?.() || "light";
+  const appStyles = colorScheme === "light" ? lightStyles : darkStyles;
   
   const navigation = useNavigation();
 

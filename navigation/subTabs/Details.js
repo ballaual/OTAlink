@@ -9,7 +9,8 @@ import styles from "../../styles/screens/detailsStyles";
 import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Details({ route }) {
-  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const colorScheme = useColorScheme?.() || "light";
+  const appStyles = colorScheme === "light" ? lightStyles : darkStyles;
 
   const operation = route.params?.operation;
   const [favorites, setFavorites] = useState([]);

@@ -1,5 +1,4 @@
 import React from "react";
-import Constants from "expo-constants";
 import { Linking, Platform, Text, View, Image, useColorScheme } from "react-native";
 
 import styles from "../../styles/screens/homeStyles";
@@ -7,9 +6,10 @@ import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 const icon = require("../../assets/icon.png");
 
-export default function Home({}) {
-  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
-
+export default function Home() {
+  const colorScheme = useColorScheme?.() || "light";
+  const appStyles = colorScheme === "light" ? lightStyles : darkStyles;
+  
   const emailBody = () =>
   `Sehr geehrtes OTAlink-Team, ich habe folgendes Anliegen (bitte ankreuzen):
 
@@ -20,7 +20,7 @@ export default function Home({}) {
     [  ] Sonstiges
 
   Hardware und Software Informationen:
-  App Version: ${Constants.manifest.version}
+  App Version: ${require("../../app.json").expo.version}
   Betriebssystem: ${Platform.OS} Version: ${Platform.Version}
   -----
   
@@ -33,7 +33,6 @@ export default function Home({}) {
     const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
     Linking.openURL(mailtoUrl);
   };
-
 
   return (
     <View style={[styles.container, appStyles.background]}>

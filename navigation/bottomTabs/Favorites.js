@@ -8,7 +8,8 @@ import styles from "../../styles/screens/expertiseStyles";
 import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Favorites({ navigation }) {
-  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const colorScheme = useColorScheme?.() || "light";
+  const appStyles = colorScheme === "light" ? lightStyles : darkStyles;
 
   const [favorites, setFavorites] = useState([]);
   const [filteredFavorites, setFilteredFavorites] = useState([]);

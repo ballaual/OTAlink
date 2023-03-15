@@ -2,7 +2,8 @@ import { StyleSheet, Text, View, useColorScheme } from "react-native";
 import { lightStyles, darkStyles } from "../../styles/appStyles";
 
 export default function Info() {
-  const appStyles = useColorScheme() === "light" ? lightStyles : darkStyles;
+  const colorScheme = useColorScheme?.() || "light";
+  const appStyles = colorScheme === "light" ? lightStyles : darkStyles;
 
   return (
     <View style={[styles.container, appStyles.background]}>
